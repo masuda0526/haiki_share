@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Shop extends Model
+{
+    //
+    protected $primaryKey = 's_id';
+    protected $keyType = 'string';
+    public $incrementing = false;
+}
