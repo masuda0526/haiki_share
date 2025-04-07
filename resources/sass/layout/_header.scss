@@ -1,0 +1,24 @@
+.l-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+    background-color: $main-color;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    &__logo{
+        font-size: $font-size-large;
+        color:$font-color-white;
+        line-height: 1;
+    }
+    &__nav{
+        font-size: $font-size-midium;
+        & ul{
+            display: flex;
+        }
+        & li{
+            margin:0 15px;
+        }
+    }
+}
+
