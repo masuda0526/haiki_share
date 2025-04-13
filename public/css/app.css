@@ -8,6 +8,20 @@ li {
   list-style: none;
 }
 
+body {
+  background-color: #E0ddCA;
+}
+
+.c-form input[type=text], .c-form input[type=password], .c-form select {
+  font-size: 16px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 1px 1px 2px 0 #707070 inset;
+  border-radius: 5px;
+  border: none;
+  box-sizing: border-box;
+}
+
 .l-header {
   width: 100%;
   display: flex;
@@ -30,4 +44,81 @@ li {
 }
 .l-header__nav li {
   margin: 0 15px;
+}
+.l-header a {
+  text-decoration: none;
+  color: #000;
+}
+
+.l-title {
+  font-size: 36px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.l-main--oneColumn {
+  width: 970px;
+  margin: 0 auto;
+}
+
+.l-form__w50 {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.l-error {
+  background-color: #ffb6b6;
+  color: #c84040;
+}
+
+.c-form {
+  width: 100%;
+  font-size: 16px;
+}
+.c-form label {
+  width: 100%;
+}
+.c-form__formBox {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+}
+.c-form__formBox--half {
+  width: calc(50% - 10px);
+  margin-right: 20px;
+}
+.c-form__formBox--half:last-child {
+  margin-right: 0;
+}
+.c-form__btnBox--center {
+  text-align: center;
+}
+.c-form__btnBox--right {
+  text-align: right;
+}
+
+.o-btn__rad {
+  padding: 10px 20px;
+  font-size: 20px;
+  text-align: center;
+  min-width: 120px;
+  border: none;
+  box-shadow: 3px 3px 5px #555;
+}
+
+.o-btn__rad {
+  border-radius: 25px;
+}
+.o-btn__rad:hover {
+  cursor: pointer;
+}
+
+.u-btn__mainColor {
+  color: #fff;
+  background-color: #853565;
+}
+.u-btn__mainColor:hover {
+  background-color: #9b517e;
+  transform: translateY(-5px);
+  transition: all 0.5s;
 }

@@ -6,7 +6,16 @@
 @import 'foundation/reset';
 @import 'foundation/variables';
 
+// Layout
 @import 'layout/header';
+@import 'layout/main';
+@import 'layout/error';
 
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+// Component
+@import 'component/form';
+
+// Object
+@import 'object/button';
+
+// Utility
+@import 'utility/button';

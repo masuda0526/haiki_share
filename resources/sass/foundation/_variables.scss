@@ -11,3 +11,22 @@ $font-size-large:36px;
 $font-size-midium:20px;
 $font-size-base:16px;
 $font-size-small:12px;
+
+// Button
+$btn-color-main:$main-color;
+$btn-color-main_hover:#9b517e;
+
+body{
+    background-color: $sub-color;
+}
+
+%inputBaseStyle{
+    font-size: $font-size-base;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 1px 1px 2px 0 #707070 inset;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,30 @@
+.c-form{
+    width: 100%;
+    font-size: $font-size-base;
+    & label{
+        width: 100%;
+    }
+    & input[type=text], input[type=password], select{
+        @extend %inputBaseStyle;
+    }
+    &__formBox{
+        width: 100%;
+        margin-bottom: 30px;
+        display: flex;
+        &--half{
+            width: calc(50% - 10px);
+            margin-right: 20px;
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+    &__btnBox{
+        &--center{
+            text-align: center;
+        }
+        &--right{
+            text-align: right;
+        }
+    }
+}

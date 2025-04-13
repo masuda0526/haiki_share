@@ -1,0 +1,18 @@
+%baseBtnStyle{
+    padding: 10px 20px;
+    font-size: $font-size-midium;
+    text-align: center;
+    min-width: 120px;
+    border: none;
+    box-shadow: 3px 3px 5px #555;
+}
+
+.o-btn{
+    &__rad{
+        @extend %baseBtnStyle;
+        border-radius: 25px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

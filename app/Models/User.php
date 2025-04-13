@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Controllers\Utility\ModelUtil;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -44,5 +47,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * 新規利用者IDを発行します。
+     */
+    public function getNewKey(){
+        $lastkey = self::select('u_id')->orderBy('u_id', 'desc')->take(1)->get()->first();
+        $newkey = ModelUtil::getNewPrimaryKey($lastkey->u_id);
+        Log::debug("新規利用者キー発行：", [$newkey]);
+        return $newkey;
     }
 }

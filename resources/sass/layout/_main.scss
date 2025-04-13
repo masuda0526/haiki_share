@@ -1,0 +1,18 @@
+.l-title{
+    font-size: $font-size-large;
+    text-align: center;
+    padding: 30px 0;
+}
+.l-main{
+    &--oneColumn{
+        width: 970px;
+        margin: 0 auto;
+    }
+}
+
+.l-form{
+    &__w50{
+        width: 50%;
+        margin: 0 auto;
+    }
+}

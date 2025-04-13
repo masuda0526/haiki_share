@@ -1,0 +1,9 @@
+.u-btn__mainColor{
+    color: $font-color-white;
+    background-color: $btn-color-main;
+    &:hover{
+        background-color: $btn-color-main_hover;
+        transform: translateY(-5px);
+        transition: all 0.5s;
+    }
+}

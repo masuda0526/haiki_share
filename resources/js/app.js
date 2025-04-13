@@ -5,8 +5,16 @@
  */
 
 require('./bootstrap');
+import AreaSelectComponent from './components/AreaSelectComponent.vue';
+import store from './Store/index';
 
 window.Vue = require('vue').default;
+Vue.config.productionTip = false;  // 本番モードの警告を非表示にする
+Vue.config.devtools = true;       // Vue Devtoolsを有効にする（開発モード）
+if (process.env.NODE_ENV === 'development') {
+    Vue.config.devtools = true;  // 開発モードでのみVue Devtoolsを有効にする
+  }
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,8 +27,8 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('area-select-component', require('./components/AreaSelectComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -29,4 +37,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    store,
+    components:{
+        'area-select-component':AreaSelectComponent
+    }
 });
+

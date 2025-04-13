@@ -5,7 +5,7 @@
             <li>TOP</li>
             <li>商品一覧</li>
             <li>マイページ</li>
-            <li>ログイン</li>
+            <li><a href="{{route('ulogin.index')}}">ログイン</a></li>
         </ul>
     </nav>
 </div>
