@@ -8586,6 +8586,44 @@ body {
   font-weight: bold;
 }
 
+.c-inputImg--default {
+  position: relative;
+  margin: 0 auto;
+}
+
+.c-inputImg--default__dummy {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #999;
+}
+
+.c-inputImg--default img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+.c-inputImg--default {
+  width: 65%;
+}
+.c-inputImg--default__dummy {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+#inputFile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
 .o-content-title {
   font-size: 24px;
   color: #853565;
@@ -8709,14 +8747,16 @@ body {
   width: 60%;
 }
 
-.p-ssignup__img {
-  width: 60%;
-  margin: 0 auto;
+.p-ssignup__shopImg {
+  width: 100%;
+  margin-bottom: 20px;
 }
-.p-ssignup__img img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.p-ssignup__form {
+  display: flex;
+  justify-content: space-between;
+}
+.p-ssignup__container--left, .p-ssignup__container--right {
+  width: 45%;
 }
 
 .u-btn__mainColor {

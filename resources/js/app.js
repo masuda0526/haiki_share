@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 import AreaSelectComponent from './components/AreaSelectComponent.vue';
+import ImgInputComponent from './components/ImgInputComponent.vue';
 import ProductCardContainerComponent from './components/ProductCardContainerComponent.vue';
 import ProductCardItemComponent from './components/ProductCardItemComponent.vue';
 import ProductItemLandscapeComponent from './components/ProductItemLandscapeComponent.vue';
@@ -49,7 +50,8 @@ const app = new Vue({
         'product-list-land':ProductListLandscapeComponent,
         'search-box-component':SearchBoxComponent,
         'product-card-item':ProductCardItemComponent,
-        'product-card-container':ProductCardContainerComponent
+        'product-card-container':ProductCardContainerComponent,
+        'img-input':ImgInputComponent,
     }
 });
 

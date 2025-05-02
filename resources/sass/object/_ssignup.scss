@@ -1,11 +1,13 @@
 .p-ssignup{
-    &__img{
-        width: 60%;
-        margin: 0 auto;
-        img{
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+    &__shopImg{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    &__form{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__container--left, &__container--right{
+        width: 45%;
     }
 }
