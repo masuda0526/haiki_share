@@ -31,7 +31,10 @@
                 <input type="password" name="repass" value="{{old('repass')}}">
             </label>
         </div>
-        <area-select-component :regions="{{$regions}}" :apiurl="'{{$apiurl}}'" :areas="{{isset($areas)}}"></area-select-component>
+        <area-select-component
+            :regions="{{$regions}}"
+            :apiurl="'{{$apiurl}}'"
+            ></area-select-component>
         <div class="c-form__formBox">
             <label for="address">住所
                 <input type="text" name="address"  value="{{old('address')}}">

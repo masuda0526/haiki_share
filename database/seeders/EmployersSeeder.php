@@ -26,10 +26,10 @@ class EmployersSeeder extends Seeder
                 $e_id = $shop->s_id.$e_cd;
                 DB::table('employers')->insert([
                     'e_id'=>$e_id,
-                    's_id'=>$shop->value('s_id'),
+                    's_id'=>$shop->s_id,
                     'e_cd'=>$e_cd,
                     'email'=>$e_id.'@test.com',
-                    'password'=>hash('sha256', $e_cd),
+                    'password'=>hash('sha256', $e_id),
                     'auth'=>$auths[$i],
                     'e_sei'=>'テスト',
                     'e_mei'=>$staff[$i],

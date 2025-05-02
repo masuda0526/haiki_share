@@ -6,6 +6,11 @@
 
 require('./bootstrap');
 import AreaSelectComponent from './components/AreaSelectComponent.vue';
+import ProductCardContainerComponent from './components/ProductCardContainerComponent.vue';
+import ProductCardItemComponent from './components/ProductCardItemComponent.vue';
+import ProductItemLandscapeComponent from './components/ProductItemLandscapeComponent.vue';
+import ProductListLandscapeComponent from './components/ProductListLandscapeComponent.vue';
+import SearchBoxComponent from './components/SearchBoxComponent.vue';
 import store from './Store/index';
 
 window.Vue = require('vue').default;
@@ -27,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('area-select-component', require('./components/AreaSelectComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,7 +44,12 @@ const app = new Vue({
     el: '#app',
     store,
     components:{
-        'area-select-component':AreaSelectComponent
+        'area-select-component':AreaSelectComponent,
+        'product-item-land':ProductItemLandscapeComponent,
+        'product-list-land':ProductListLandscapeComponent,
+        'search-box-component':SearchBoxComponent,
+        'product-card-item':ProductCardItemComponent,
+        'product-card-container':ProductCardContainerComponent
     }
 });
 

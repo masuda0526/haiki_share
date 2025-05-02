@@ -7,10 +7,13 @@ $font-color-white:#fff;
 $font-color-disable:#a6a6a6;
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-large:36px;
-$font-size-midium:20px;
-$font-size-base:16px;
-$font-size-small:12px;
+$font-size-xl:36px;
+$font-size-ll:32px;
+$font-size-l:28px;
+$font-size-lm:24px;
+$font-size-m:20px;
+$font-size-s:16px;
+$font-size-ss:12px;
 
 // Button
 $btn-color-main:$main-color;
@@ -21,7 +24,7 @@ body{
 }
 
 %inputBaseStyle{
-    font-size: $font-size-base;
+    font-size: $font-size-m;
     width: 100%;
     padding: 20px;
     box-shadow: 1px 1px 2px 0 #707070 inset;

@@ -2,18 +2,17 @@
     <div class="c-form__formBox">
             <div class="c-form__formBox--half">
                 <label for="region">地域
-                    <select class="" name="region" id="" v-if="this.regions" v-model="r_id" @change="this.getAreas">
+                    <select class="" name="region" id="" v-if="regions" v-model="region_id" @change="getAreas">
                         <option value="0">選択してください</option>
-                        <option v-for="region in this.regions" :value='region.id' >{{ region.r_name }}</option>
-                    </select>
-                    <select class="" name="region" id="" v-else>
+                        <option v-for="region in regions" :value='region.id' >{{ region.r_name }}</option>
                     </select>
                 </label>
             </div>
             <div class="c-form__formBox--half">
                 <label for="pref">都道府県
-                    <select class="" name="pref" id="" v-if="this.prefs">
-                        <option v-for="pref in this.prefs" :value="pref.pref_id">{{ pref.pref_name }}</option>
+                    <select class="" name="pref" id="" v-if="prefs" v-model="user_pref">
+                        <option value="00">選択してください</option>
+                        <option v-for="pref in prefs" :value="String(pref.pref_id)">{{ pref.pref_name }}</option>
                     </select>
                     <select class="" name="pref" id="" v-else>
                     </select>
@@ -26,18 +25,19 @@ import axios from 'axios';
 
 
 export default{
-    props:['regions', 'apiurl'],
+    props:['regions', 'apiurl', 'u_pref', 'r_id'],
     data(){
         return{
-            r_id:0,
-            prefs:{}
+            region_id:0,
+            user_pref:"",
+            prefs:[]
         }
     },
     methods:{
         getAreas(){
             axios.get(this.apiurl,{
                 params:{
-                    region_id:this.r_id
+                    region_id:this.region_id
                 }
             }
             ).then(res=>{
@@ -46,9 +46,22 @@ export default{
                 console.log(err);
             })
         },
-        showRegion:function(){
-            console.log(this.r_id);
+
+    },
+    mounted(){
+        if(!this.r_id){
+            this.region_id = 0;
+        }else{
+            this.region_id = this.r_id;
+            this.getAreas();
         }
+        if(this.u_pref){
+            this.user_pref = String(this.u_pref);
+        }else{
+            this.user_pref = '';
+        }
+        console.log(String(this.user_pref))
+
     }
 }
 </script>

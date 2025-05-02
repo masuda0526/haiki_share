@@ -1,0 +1,18 @@
+.c-sidebar{
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    &__title{
+        font-size: $font-size-m;
+        margin-bottom: 15px;
+    }
+    &__content{
+        margin-bottom: 10px;
+    }
+    &__subtitle, &__text{
+        font-size: $font-size-s;
+    }
+
+}

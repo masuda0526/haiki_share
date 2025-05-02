@@ -1,0 +1,11 @@
+.p-ssignup{
+    &__img{
+        width: 60%;
+        margin: 0 auto;
+        img{
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}

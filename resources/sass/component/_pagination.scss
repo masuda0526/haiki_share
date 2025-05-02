@@ -1,0 +1,15 @@
+.c-pagination{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    width: 70%;
+    margin: 0 auto;
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+    &__active{
+        color: $main-color;
+        font-weight: bold;
+    }
+}

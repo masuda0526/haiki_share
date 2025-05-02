@@ -1,7 +1,8 @@
 
 
 const state = {
-    BASE_URL:'http://localhost:8000/'
+    BASE_URL:'http://localhost:8000/',
+    searchText: '',
 }
 
 const getters ={
@@ -11,6 +12,13 @@ const getters ={
 }
 
 const mutations = {
+    setSearchText(state, text){
+        console.log('mutations');
+        console.log(text);
+        state.searchText = text;
+        console.log('state.search_text');
+        console.log(state.searchText);
+    }
 
 }
 

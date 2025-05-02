@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class ULoginController extends BaseUserPageController
 {
@@ -24,12 +25,15 @@ class ULoginController extends BaseUserPageController
             'password' => ['required']
         ];
         $this->validate($request, $rules);
-        $user = DB::table('users')->where('email', $email)->first();
+        $user = User::where('email', $email)->first();
         Log::debug('debug======================',['user'=>$user]);
         $hash = hash('sha256', $pass);
         if($hash != $user->password){
             return back()->withInput($request->all())->withErrors(['nomatchpass'=>'メールアドレスまたはパスワードが一致しません']);
         }
-        return view('home');
+
+        Session::put('user', $user);
+
+        return redirect()->route('umypage.index');
     }
 }

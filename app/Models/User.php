@@ -15,6 +15,10 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'u_id';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -49,6 +53,10 @@ class User extends Authenticatable
         ];
     }
 
+    function pref(){
+        return $this->belongsTo(Prefecture::class, 'u_pref', 'pref_id');
+    }
+
     /**
      * 新規利用者IDを発行します。
      */
@@ -57,5 +65,12 @@ class User extends Authenticatable
         $newkey = ModelUtil::getNewPrimaryKey($lastkey->u_id);
         Log::debug("新規利用者キー発行：", [$newkey]);
         return $newkey;
+    }
+
+    /**
+     * フルネームを返却します
+     */
+    public function getFullName(){
+        return $this->u_sei.' '.$this->u_mei;
     }
 }

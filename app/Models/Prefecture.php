@@ -11,4 +11,8 @@ class Prefecture extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    function users(){
+        return $this->hasMany(User::class, 'u_pref', 'pref_id');
+    }
+
 }

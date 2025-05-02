@@ -1,15 +1,35 @@
 .l-title{
-    font-size: $font-size-large;
+    font-size: $font-size-xl;
     text-align: center;
     padding: 30px 0;
+    &__sub{
+        font-size: $font-size-l;
+        color: $main-color;
+        border-left:5px solid $main-color;
+        padding-left: 10px;
+        margin-bottom: 15px;
+    }
 }
 .l-main{
     &--oneColumn{
         width: 970px;
         margin: 0 auto;
     }
+    &--twoColumn{
+        width: 900px;
+    }
 }
-
+.l-content__two{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.l-sub{
+    &__twoColumn{
+        width: 250px;
+    }
+}
 .l-form{
     &__w50{
         width: 50%;

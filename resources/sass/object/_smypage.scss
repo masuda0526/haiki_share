@@ -1,0 +1,67 @@
+.p-smypage{
+    &__main{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    &__img{
+        width: 55%;
+        img{
+            max-width: 100%;
+            height:auto;
+            display: block;
+        }
+    }
+    &__explain{
+        width: 40%;
+    }
+    &__sstn, &__head, &__text{
+        font-size: $font-size-m;
+    }
+    &__sname{
+        font-size: $font-size-lm;
+        font-weight: bold;
+    }
+    &__sstn{
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    &__head{
+        margin-bottom: 0px;
+    }
+    &__text{
+        margin-bottom: 15px;
+    }
+    &__content{
+        &-f{
+            display: flex;
+        }
+    }
+    &__product{
+        width: 100%;
+        overflow: auto;
+        min-height: 100px;
+    }
+    &__staff{
+        width: 80%;
+        box-sizing: border-box;
+        &-btn{
+            width: 20%;
+            box-sizing: border-box;
+        }
+    }
+    &__row{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__col{
+        width: 10%;
+    }
+    &__col3{
+        width: 30%;
+    }
+    &__col6{
+        width: 60%;
+    }
+
+}

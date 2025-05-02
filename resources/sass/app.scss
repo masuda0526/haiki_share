@@ -1,10 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
 
 
 // Variables
 @import 'foundation/reset';
 @import 'foundation/variables';
+// @import 'bootstrap/scss/bootstrap';
 
 // Layout
 @import 'layout/header';
@@ -13,9 +16,18 @@
 
 // Component
 @import 'component/form';
+@import 'component/sidebar';
+@import 'component/productItem';
+@import 'component/searchbox';
+@import 'component/card';
+@import 'component/pagination';
 
 // Object
+@import 'object/parts';
 @import 'object/button';
+@import 'object/smypage';
+@import 'object/ssignup';
 
 // Utility
 @import 'utility/button';
+@import 'utility/layout';

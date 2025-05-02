@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('s_ccd', 3)->comment('支店コード：本店は000');
             $table->string('s_name', 50)->comment('本店名');
             $table->string('s_stn', 50)->comment('支店名');
+            $table->string('s_img', 255)->nullable()->comment('店舗画像');
             $table->string('s_pref', 2)->comment('都道府県ID');
             $table->string('s_adrs', 255)->comment('店舗住所');
             $table->integer('s_status')->default(0)->comment('店舗ステータス 0:営業中 1:休業中 2:閉店');

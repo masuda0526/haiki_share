@@ -1,0 +1,42 @@
+.c-product{
+    &__land{
+        width: 100%;
+        height: 210px;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+        .c-product__imgBox{
+            width: 280px;
+            height: 210px;
+            background-color: #ccc;
+            overflow: hidden;
+            border-radius: 5px 0 0 5px;
+        }
+        .c-product__content{
+            width: 550px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .c-product__name{
+            width: 100%;
+            font-size: $font-size-lm;
+            margin-bottom: 10px;
+        }
+        .c-product__text{
+            width: 100%;
+            font-size: $font-size-m;
+            margin-bottom: 5px;
+        }
+
+    }
+}

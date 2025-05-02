@@ -7,12 +7,12 @@
     padding: 10px 25px;
     box-sizing: border-box;
     &__logo{
-        font-size: $font-size-large;
+        font-size: $font-size-xl;
         color:$font-color-white;
         line-height: 1;
     }
     &__nav{
-        font-size: $font-size-midium;
+        font-size: $font-size-m;
         & ul{
             display: flex;
         }

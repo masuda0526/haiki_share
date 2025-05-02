@@ -1,10 +1,22 @@
 %baseBtnStyle{
     padding: 10px 20px;
-    font-size: $font-size-midium;
+    font-size: $font-size-m;
     text-align: center;
     min-width: 120px;
     border: none;
     box-shadow: 3px 3px 5px #555;
+    display: inline-block;
+    text-decoration: none;
+}
+%baseBtnStyle_s{
+    padding: 7px 12px;
+    font-size: $font-size-s;
+    text-align: center;
+    min-width: 100px;
+    border: none;
+    box-shadow: 3px 3px 5px #555;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .o-btn{
@@ -14,5 +26,32 @@
         &:hover{
             cursor: pointer;
         }
+    }
+    &__rad--s{
+        @extend %baseBtnStyle_s;
+        border-radius: 25px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.o-btnArea{
+    &-center{
+        text-align: center;
+        padding: 10px 0;
+
+    }
+    &-center__pb0{
+        text-align: center;
+        padding: 10px 0 0 0;
+    }
+    &-right{
+        text-align: right;
+        padding: 10px 0;
+    }
+    &-right__pb0{
+        text-align: right;
+        padding: 10px 0 0 0 ;
     }
 }
