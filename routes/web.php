@@ -43,3 +43,4 @@ Route::get('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, '
 Route::post('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 'login'])->name('slogin.login');
 Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
 Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'index'])->name('ssignup.index');
+Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');

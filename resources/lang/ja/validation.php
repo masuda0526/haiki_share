@@ -47,7 +47,7 @@ return [
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
-    'file' => 'The :attribute must be a file.',
+    'file' => 'ファイルを添付してださい。',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
         'numeric' => 'The :attribute must be greater than :value.',
@@ -84,11 +84,11 @@ return [
     'mac_address' => 'The :attribute must be a valid MAC address.',
     'max' => [
         'numeric' => ':attributeは:max以内の値を入力してください',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
+        'file' => ':attribute 添付できる:attributeは:maxKBまでです。',
         'string' => ':attributeは:max文字以内で入力してください',
         'array' => 'The :attribute must not have more than :max items.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => '添付できる:attributeの拡張子は:valuesです。',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'numeric' => ':attributeは:min以上の値を入力してください',
@@ -125,7 +125,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attributeはすでに登録されています。',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -166,7 +166,15 @@ return [
         'u_sei' => '利用者（姓）',
         'u_mei'=> '利用者（名）',
         'address' => '住所',
-        'pref' => '都道府県'
+        'pref' => '都道府県',
+        'file' => '画像',
+        's_name' => '店舗名',
+        's_stn' => '支店名',
+        's_adrs' => '店舗住所',
+        'e_sei' => '従業員名（姓）',
+        'e_seib' => '代表者名（姓）',
+        'e_mei' => '従業員名（名）',
+        'e_meib' => '代表者名（名）',
     ],
 
 ];

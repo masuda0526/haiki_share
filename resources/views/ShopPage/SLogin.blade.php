@@ -15,7 +15,7 @@
                 <input type="password" name="password" id="">
             </label>
         </div>
-        <div class="c-form__btnBox--right"><a href="{{route('usignup.index')}}">新規登録 ＞</a></div>
+        <div class="c-form__btnBox--right"><a href="{{route('ssignup.signup')}}">新規登録 ＞</a></div>
         <div class="c-form__btnBox--center">
             <button class="o-btn__rad u-btn__mainColor" type="submit">ログイン</button>
         </div>

@@ -4,7 +4,7 @@
 
 @section('main_content')
 
-<form action="">
+<form action="{{route('ssignup.signup')}}" enctype="multipart/form-data" method="POST">
 
     <div class="p-ssignup__shopImg">
         <img-input></img-input>
@@ -36,18 +36,18 @@
         <div class="p-ssignup__container--right c-form">
             <div class="c-form__formBox">
                 <div class="c-form__formBox--half">
-                    <label for="e_sei">代表者姓
+                    <label for="e_seib">代表者名（姓）
                         <input type="text" name="e_sei" value="{{old('e_sei')}}">
                     </label>
                 </div>
                 <div class="c-form__formBox--half">
-                    <label for="e_mei">代表者名
+                    <label for="e_meib">代表者名（名）
                         <input type="text" name="e_mei" value="{{old('e_mei')}}">
                     </label>
                 </div>
             </div>
             <div class="c-form__formBox">
-                <label for="email">代表者メールアドレス
+                <label for="email">メールアドレス
                     <input type="text" name="email" value="{{old('email')}}">
                 </label>
             </div>
