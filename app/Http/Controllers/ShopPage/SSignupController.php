@@ -18,7 +18,6 @@ class SSignupController extends BaseShopPageController
         $regions = Region::all();
         $apiurl = route('api.getAreas');
         $shop = new Shop();
-        dd($shop->getNewKey());
         return view('ShopPage.SSignup', compact('regions', 'apiurl'));
     }
 
@@ -36,7 +35,8 @@ class SSignupController extends BaseShopPageController
             'e_meib' => 'required|max:10',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:4',
-            'repass' => 'required'
+            'repass' => 'required',
+            'pref' => 'required'
         ];
 
         $validation = $request->validate($rules);
@@ -49,18 +49,42 @@ class SSignupController extends BaseShopPageController
         }
 
         // ファイルの保存処理
+        $tmpFileNm = null;
         /** @var \Illuminate\Http\UploadedFile $file */
-        $file = $request('file');
-        $tmpFileNm = uniqid().'.'.$file->extension();
-        $file->storeAs('public/img', $tmpFileNm);
+        if($request->hasFile('file')){
+            $file = $request('file');
+            $tmpFileNm = uniqid().'.'.$file->extension();
+            $file->move(public_path('img'), $tmpFileNm);
+        }
 
         $shop = new Shop();
-        dd($shop->getNewKey());
+        $shop->s_id = $shop->getNewKeyForParentShop();
+        $shop->s_pcd = $shop->getNewShopParentCode();
+        $shop->s_ccd = '000';
+        $shop->s_name = $request->input('s_name');
+        $shop->s_stn = $request->input('s_stn');
+        $shop->s_pref = $request->input('pref');
+        $shop->s_adrs = $request->input('s_adrs');
+        $shop->s_status = '0';
+        if($tmpFileNm){
+            $shop->s_img = $tmpFileNm;
+        }
+        $shop->created_at = now();
+        $shop->save();
 
-        $enployer = new Employers();
+        $employer = new Employers();
+        $employer->e_id = $shop->s_id.'000';
+        $employer->s_id = $shop->s_id;
+        $employer->e_cd = '000';
+        $employer->email = $request->input('email');
+        $employer->password = hash('sha256', $request->input('password'));
+        $employer->auth = '00,01,02,03';
+        $employer->e_sei = $request->input('e_seib');
+        $employer->e_mei = $request->input('e_meib');
+        $employer->save();
 
 
-        return redirect()->route('smypage.index');
+        return redirect()->route('slogin.index');
 
     }
 }

@@ -29,15 +29,37 @@ class Shop extends Model
         return asset($this->s_img);
     }
 
-    function getLastKeyForParentShop(){
+    /**
+     * 登録ずみの最後のPCDを返却
+     */
+    function getLastShopParentCode(){
         $s_pcd = self::select('s_pcd')->orderBy('s_pcd', 'desc')->take(1)->get()->first();
-        return 'S'.$s_pcd->s_pcd.'000';
+        return $s_pcd->s_pcd;
     }
 
+    /**
+     * 新たなPCDを生成する
+     */
+    function getNewShopParentCode(){
+        $int_pcd = (int)$this->getLastShopParentCode();
+        $int_pcd++;
+        return str_pad(strval($int_pcd), 3, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * 登録ずみの最後のSIDを返却
+     */
+    function getLastKeyForParentShop(){
+        $s_pcd = $this->getLastShopParentCode();
+        return 'S'.$s_pcd.'000';
+    }
+
+    /**
+     *
+     */
     function getNewKeyForParentShop(){
-        $s_pcd = self::select('s_pcd')->orderBy('s_pcd', 'desc')->take(1)->get()->first();
-        $new_pcd = ModelUtil::getNewPrimaryKey('S'.$s_pcd->s_pcd);
-        $new_key = $new_pcd.'000';
+        $s_pcd = $this->getNewShopParentCode();
+        $new_key = 'S'.$s_pcd.'000';
         return $new_key;
     }
 

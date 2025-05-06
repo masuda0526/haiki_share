@@ -4,7 +4,9 @@
 
 @section('main_content')
 
-<form action="{{route('ssignup.signup')}}" enctype="multipart/form-data" method="POST">
+@include('layouts.error')
+<form action="{{route('ssignup.signup')}}" enctype="multipart/form-data" method="post">
+    @csrf
 
     <div class="p-ssignup__shopImg">
         <img-input></img-input>
@@ -37,12 +39,12 @@
             <div class="c-form__formBox">
                 <div class="c-form__formBox--half">
                     <label for="e_seib">代表者名（姓）
-                        <input type="text" name="e_sei" value="{{old('e_sei')}}">
+                        <input type="text" name="e_seib" value="{{old('e_sei')}}">
                     </label>
                 </div>
                 <div class="c-form__formBox--half">
                     <label for="e_meib">代表者名（名）
-                        <input type="text" name="e_mei" value="{{old('e_mei')}}">
+                        <input type="text" name="e_meib" value="{{old('e_mei')}}">
                     </label>
                 </div>
             </div>
@@ -64,7 +66,7 @@
         </div>
     </div>
     <div class="o-btnArea-center">
-        <a href="" class="o-btn__rad u-btn__mainColor">新規登録</a>
+        <button href="" class="o-btn__rad u-btn__mainColor" type="submit">新規登録</button>
     </div>
 
 </form>
