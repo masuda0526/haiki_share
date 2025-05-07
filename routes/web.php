@@ -44,3 +44,5 @@ Route::post('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 
 Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
 Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'index'])->name('ssignup.index');
 Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');
+Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
+Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');

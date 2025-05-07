@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Employers;
 use App\Models\Region;
 use App\Models\Shop;
+use App\Http\Controllers\Utility\AuthKubun;
 use Illuminate\Http\Request;
+use Session;
 
 class SSignupController extends BaseShopPageController
 {
@@ -15,6 +17,7 @@ class SSignupController extends BaseShopPageController
      * 初期表示
      */
     function index(){
+        // 表示用
         $regions = Region::all();
         $apiurl = route('api.getAreas');
         $shop = new Shop();
@@ -52,7 +55,7 @@ class SSignupController extends BaseShopPageController
         $tmpFileNm = null;
         /** @var \Illuminate\Http\UploadedFile $file */
         if($request->hasFile('file')){
-            $file = $request('file');
+            $file = $request->file('file');
             $tmpFileNm = uniqid().'.'.$file->extension();
             $file->move(public_path('img'), $tmpFileNm);
         }

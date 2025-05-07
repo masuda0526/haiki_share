@@ -1,21 +1,22 @@
 <template>
     <div :class="pageClass">
         <input type="file" name="file" id="inputFile" accept="image/*" @change="changeInputImg">
-        <img :src="imgurl" alt="" v-if="isFile">
-        <div :class="pageClass + '__dummy'" v-else="isFile">
+        <img :src="imgurl" alt="" v-if="isFile || imgurl">
+        <div :class="pageClass + '__dummy'" v-else="!isFile || !imgurl">
             <p>ファイルをドラッグ＆ドロップ　または　クリック</p>
         </div>
     </div>
 </template>
 
 <script>
-import { drop } from 'lodash';
-
     export default{
         props:{
             pagename:{
                 type: String,
                 default:'default'
+            },
+            dburl:{
+                type: String,
             }
         },
         data(){
@@ -50,6 +51,13 @@ import { drop } from 'lodash';
                     'default':'c-inputImg--default',
                     'ssignup':'c-inputImg--ssignup',
                 }[this.pagename] || 'c-inputImg--default'
+            }
+        },
+        mounted(){
+            if(this.dburl){
+                this.imgurl = this.dburl;
+                console.log(this.dburl);
+                console.log(this.imgurl);
             }
         }
 

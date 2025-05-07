@@ -15,7 +15,7 @@
             <p class="p-smypage__head">店長</p>
             <p class="p-smypage__text">{{$shop->getBossFullName()}}</p>
             <div class="o-btnArea-right">
-                <a class="o-btn__rad u-btn__mainColor" href="">店舗情報編集</a>
+                <a class="o-btn__rad u-btn__mainColor" href="{{ route('editshop.index') }}">店舗情報編集</a>
             </div>
         </div>
     </div>

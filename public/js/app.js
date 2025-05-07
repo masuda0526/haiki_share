@@ -9634,14 +9634,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     pagename: {
       type: String,
       default: 'default'
+    },
+    dburl: {
+      type: String
     }
   },
   data() {
@@ -9676,6 +9676,13 @@ __webpack_require__.r(__webpack_exports__);
         'default': 'c-inputImg--default',
         'ssignup': 'c-inputImg--ssignup'
       }[this.pagename] || 'c-inputImg--default';
+    }
+  },
+  mounted() {
+    if (this.dburl) {
+      this.imgurl = this.dburl;
+      console.log(this.dburl);
+      console.log(this.imgurl);
     }
   }
 });
@@ -10031,7 +10038,7 @@ var render = function render() {
     on: {
       change: _vm.changeInputImg
     }
-  }), _vm._v(" "), _vm.isFile ? _c("img", {
+  }), _vm._v(" "), _vm.isFile || _vm.imgurl ? _c("img", {
     attrs: {
       src: _vm.imgurl,
       alt: ""

@@ -8759,6 +8759,15 @@ body {
   width: 45%;
 }
 
+.p-editShop__container {
+  width: 70%;
+  margin: 0 auto;
+}
+.p-editShop__shopImg {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .u-btn__mainColor {
   color: #fff;
   background-color: #853565;

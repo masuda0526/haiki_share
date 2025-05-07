@@ -13,4 +13,9 @@ class Employers extends Model
     function getFullName(){
         return $this->e_sei.' '.$this->e_mei;
     }
+
+    function hasAuth($str){
+        $auths = explode(',', $this->auth);
+        return in_array($str, $auths);
+    }
 }
