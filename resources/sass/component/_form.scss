@@ -4,7 +4,7 @@
     & label{
         width: 100%;
     }
-    & input[type=text], input[type=password], select{
+    & input[type=text], input[type=password], input[type=number], input[type=date], select{
         @extend %inputBaseStyle;
     }
     &__formBox{

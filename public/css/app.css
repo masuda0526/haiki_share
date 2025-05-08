@@ -8315,7 +8315,7 @@ body {
   background-color: #E0ddCA;
 }
 
-.c-form input[type=text], .c-form input[type=password], .c-form select {
+.c-form input[type=text], .c-form input[type=password], .c-form input[type=number], .c-form input[type=date], .c-form select {
   font-size: 20px;
   width: 100%;
   padding: 20px;
@@ -8723,7 +8723,13 @@ body {
 .p-smypage__product {
   width: 100%;
   overflow: auto;
-  min-height: 100px;
+  margin-bottom: 10px;
+}
+.p-smypage__product-btn {
+  margin: 0;
+}
+.p-smypage__product-parchased {
+  min-height: 150px;
 }
 .p-smypage__staff {
   width: 80%;
@@ -8764,6 +8770,15 @@ body {
   margin: 0 auto;
 }
 .p-editShop__shopImg {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.p-spregist__container {
+  width: 70%;
+  margin: 0 auto;
+}
+.p-spregist__shopImg {
   width: 100%;
   margin-bottom: 20px;
 }

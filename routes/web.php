@@ -25,6 +25,7 @@ Route::get('/test', [\App\Http\Controllers\Base\BaseUserPageController::class, '
 
 // Api
 Route::get('/api/area', [App\Http\Controllers\Api\ApiController::class, 'getAreas'])->name('api.getAreas');
+Route::get('/api/category', [App\Http\Controllers\Api\ApiController::class, 'getCategories'])->name('api.getCategories');
 
 // Normal
 Route::get('/list', [\App\Http\Controllers\Normal\ListController::class, 'index'])->name('list');
@@ -34,9 +35,11 @@ Route::get('/ulogin', [\App\Http\Controllers\UserPage\ULoginController::class, '
 Route::post('/ulogin', [\App\Http\Controllers\UserPage\ULoginController::class, 'login'])->name('ulogin.login');
 Route::get('/usignup', [\App\Http\Controllers\UserPage\USignupController::class, 'index'])->name('usignup.index');
 Route::post('/usignup', [\App\Http\Controllers\UserPage\USignupController::class, 'signup'])->name('usignup.signup');
-Route::get('/umypage', [\App\Http\Controllers\UserPage\UMypageController::class, 'index'])->name('umypage.index');
-Route::get('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'index'])->name('uedit.index');
-Route::post('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'update'])->name('uedit.update');
+Route::middleware(['check.login.user'])->group(function(){
+    Route::get('/umypage', [\App\Http\Controllers\UserPage\UMypageController::class, 'index'])->name('umypage.index');
+    Route::get('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'index'])->name('uedit.index');
+    Route::post('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'update'])->name('uedit.update');
+});
 
 // ShopPage
 Route::get('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 'index'])->name('slogin.index');
@@ -44,5 +47,9 @@ Route::post('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 
 Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
 Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'index'])->name('ssignup.index');
 Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');
-Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
-Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');
+Route::middleware(['check.login.employer'])->group(function(){
+    Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
+    Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');
+    Route::get('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'index'])->name('pregist.index');
+    Route::post('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'update'])->name('pregist.update');
+});

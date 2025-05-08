@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('price')->comment('定価');
             $table->integer('dis_price')->comment('割引価格');
             $table->date('ex_dt')->nullable()->comment('賞味期限');
+            $table->string('p_comment', 255)->nullable()->comment('商品コメント');
             $table->integer('p_status')->default(0)->nullable()->comment('出品状況 0:出品中 1:保留中 2:出品取消 3:販売済');
             $table->string('u_id', 5)->nullable()->comment('購入者ID');
             $table->timestamps();

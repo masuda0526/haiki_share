@@ -31,10 +31,13 @@
                 出品した商品はありません。
             @endif
         </div>
+        <div class="o-btnArea-right p-smypage__product-btn">
+            <a class="o-btn__rad u-btn__mainColor" href="{{ route('pregist.index') }}">商品を追加</a>
+        </div>
     </div>
     <div class="u-mb6">
         <h3 class="o-content-title">購入された商品</h3>
-        <div class="p-smypage__product">
+        <div class="p-smypage__product p-smypage__product-parchased">
             @if (count($parchaseProducts))
                 <product-card-container
                 :products='@json($parchaseProducts)'
@@ -62,7 +65,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="o-btnArea-center p-smypage__staff-btn">
+            <div class="o-btnArea-right p-smypage__staff-btn">
                 <a class="o-btn__rad u-btn__mainColor">従業員追加</a>
             </div>
         </div>

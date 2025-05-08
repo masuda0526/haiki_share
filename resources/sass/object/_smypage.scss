@@ -40,7 +40,13 @@
     &__product{
         width: 100%;
         overflow: auto;
-        min-height: 100px;
+        margin-bottom: 10px;
+        &-btn{
+            margin: 0;
+        }
+        &-parchased{
+            min-height: 150px;
+        }
     }
     &__staff{
         width: 80%;
