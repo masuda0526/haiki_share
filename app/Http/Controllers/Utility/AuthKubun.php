@@ -17,4 +17,15 @@ enum AuthKubun: string{
         };
     }
 
+    public static function toArray():array{
+        return array_column(self::cases(), 'value', 'name');
+    }
+
+    public static function toAuthArray(): array {
+        return array_reduce(self::cases(), function ($carry, $case) {
+            $carry[$case->value] = $case->getAuthName();
+            return $carry;
+        }, []);
+    }
+
 }

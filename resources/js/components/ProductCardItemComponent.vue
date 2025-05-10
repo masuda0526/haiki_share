@@ -1,7 +1,7 @@
 <template>
     <div :class="['c-card', forUseClass]">
         <div class="c-card-img">
-            <img src="http://localhost:8000/img/noimg.png" alt="">
+            <img :src="product.p_img_url" alt="">
         </div>
         <div class="c-card-content">
             <h4 class="c-card-title">{{this.product.p_name}}</h4>
@@ -35,6 +35,9 @@ export default{
                 'smypage':'c-card__smypage',
             }[this.foruse] ||'c-card__col4';
         }
+    },
+    mounted(){
+        console.log(this.product);
     }
 
 }

@@ -8551,11 +8551,10 @@ body {
   width: 100%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  background-color: #ddd;
   border-radius: 5px 5px 0 0;
 }
 .c-card-img img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;

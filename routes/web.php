@@ -51,5 +51,5 @@ Route::middleware(['check.login.employer'])->group(function(){
     Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
     Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');
     Route::get('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'index'])->name('pregist.index');
-    Route::post('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'update'])->name('pregist.update');
+    Route::post('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'regist'])->name('pregist.regist');
 });

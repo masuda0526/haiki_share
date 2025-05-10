@@ -26,7 +26,7 @@ class Shop extends Model
         if(empty($this->s_img)){
             return asset('img/noimg.png');
         }
-        return asset('img/'.$this->s_img);
+        return asset('img/shop/'.$this->s_img);
     }
 
     /**

@@ -9823,6 +9823,9 @@ __webpack_require__.r(__webpack_exports__);
         'smypage': 'c-card__smypage'
       }[this.foruse] || 'c-card__col4';
     }
+  },
+  mounted() {
+    console.log(this.product);
   }
 });
 
@@ -10242,7 +10245,14 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     class: ["c-card", _vm.forUseClass]
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "c-card-img"
+  }, [_c("img", {
+    attrs: {
+      src: _vm.product.p_img_url,
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "c-card-content"
   }, [_c("h4", {
     staticClass: "c-card-title"
@@ -10252,20 +10262,9 @@ var render = function render() {
     staticClass: "c-card-p"
   }, [_vm._v("定価：" + _vm._s(this.product.dis_price) + "円")]), _vm._v(" "), _c("p", {
     staticClass: "c-card-p"
-  }, [_vm._v("価格：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _vm._m(1)])]);
+  }, [_vm._v("価格：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _vm._m(0)])]);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "c-card-img"
-  }, [_c("img", {
-    attrs: {
-      src: "http://localhost:8000/img/noimg.png",
-      alt: ""
-    }
-  })]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {

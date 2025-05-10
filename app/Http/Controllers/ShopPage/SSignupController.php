@@ -8,8 +8,12 @@ use App\Models\Employers;
 use App\Models\Region;
 use App\Models\Shop;
 use App\Http\Controllers\Utility\AuthKubun;
+use App\Http\Controllers\Utility\PathKubun;
+use App\Http\Controllers\Utility\PathKunun;
 use Illuminate\Http\Request;
 use Session;
+
+use function PHPUnit\Framework\isNull;
 
 class SSignupController extends BaseShopPageController
 {
@@ -55,9 +59,7 @@ class SSignupController extends BaseShopPageController
         $tmpFileNm = null;
         /** @var \Illuminate\Http\UploadedFile $file */
         if($request->hasFile('file')){
-            $file = $request->file('file');
-            $tmpFileNm = uniqid().'.'.$file->extension();
-            $file->move(public_path('img'), $tmpFileNm);
+            $tmpFileNm = $this->saveFile($request->file('file'), PathKubun::SHOP_IMG_PATH->value);
         }
 
         $shop = new Shop();
@@ -69,7 +71,7 @@ class SSignupController extends BaseShopPageController
         $shop->s_pref = $request->input('pref');
         $shop->s_adrs = $request->input('s_adrs');
         $shop->s_status = '0';
-        if($tmpFileNm){
+        if(!isNull($tmpFileNm) && !empty($tmpFileNm)){
             $shop->s_img = $tmpFileNm;
         }
         $shop->created_at = now();

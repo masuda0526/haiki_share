@@ -7,7 +7,7 @@
 @include('layouts.error')
 <div class="p-spregist__container">
 
-    <form action="{{route('editshop.update')}}" enctype="multipart/form-data" method="post">
+    <form action="{{route('pregist.regist')}}" enctype="multipart/form-data" method="post">
         @csrf
 
         <div class="p-spregist__shopImg">
@@ -37,19 +37,19 @@
                 :groups=@json($groups)
                 :apiurl="'{{ $apiUrl }}'"></category-input>
                 <div class="c-form__formBox">
-                    <label for="s_adrs">賞味期限
-                        <input type="date" name="s_adrs" value="{{old('ex_dt')}}">
+                    <label for="ex_dt">賞味期限
+                        <input type="date" name="ex_dt" value="{{old('ex_dt')}}">
                     </label>
                 </div>
                 <div class="c-form__formBox">
-                    <label for="s_adrs">コメント
-                        <input type="text" name="s_adrs" value="{{old('p_comment')}}">
+                    <label for="p_comment">コメント
+                        <input type="text" name="p_comment" value="{{old('p_comment')}}">
                     </label>
                 </div>
             </div>
         </div>
         <div class="o-btnArea-center">
-            <button href="" class="o-btn__rad u-btn__mainColor" type="submit">更新する</button>
+            <button href="" class="o-btn__rad u-btn__mainColor" type="submit">出品する</button>
         </div>
 
     </form>
