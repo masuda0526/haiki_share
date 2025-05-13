@@ -10262,17 +10262,16 @@ var render = function render() {
     staticClass: "c-card-p"
   }, [_vm._v("定価：" + _vm._s(this.product.dis_price) + "円")]), _vm._v(" "), _c("p", {
     staticClass: "c-card-p"
-  }, [_vm._v("価格：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _vm._m(0)])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_vm._v("価格：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _c("div", {
     staticClass: "o-btnArea-right__pb0"
-  }, [_c("button", {
-    staticClass: "o-btn__rad--s u-btn__mainColor"
-  }, [_vm._v("詳細を見る")])]);
-}];
+  }, [_c("a", {
+    staticClass: "o-btn__rad--s u-btn__mainColor",
+    attrs: {
+      href: _vm.product.p_detail_page_url
+    }
+  }, [_vm._v("詳細を見る")])])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 

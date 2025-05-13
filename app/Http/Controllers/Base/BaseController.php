@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Base;
 
 use App\Http\Controllers\Controller;
+use App\Mail\MailSend;
+use App\Models\Employers;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Mail;
+use Session;
 
 class BaseController extends Controller
 {
@@ -34,4 +38,27 @@ class BaseController extends Controller
         $file->move(public_path('img'), $tmpFileNm);
         return $tmpFileNm;
     }
+
+    /**
+     * 従業員としてログインしているか返却します。
+     */
+    function checkLoginForEmployers(){
+        return !empty($this->checkLoginAndGetEmployer());
+    }
+
+    /**
+     * 従業員としてログインしていた場合、従業員情報を返却します。
+     */
+    function checkLoginAndGetEmployer(){
+        $employers = Session::get('employer');
+        return $employers;
+    }
+
+    /**
+     * メール送信処理を行います。
+     */
+    function sendEmail(String $address, String $viewName, array $data){
+        Mail::to($address)->send(new MailSend($viewName, $data));
+    }
+
 }

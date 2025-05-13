@@ -1,0 +1,28 @@
+.p-pdetail{
+    &__content{
+        width: 970px;
+        display: flex;
+        justify-content: space-around;
+    }
+    &__img{
+        width: 500px;
+        img{
+            max-width: 100%;
+            aspect-ratio: 4/3;
+            height: auto;
+        }
+    }
+    &__productName{
+        font-size: $font-size-ll;
+        margin-bottom: 40px;
+    }
+    &__disprice{
+        font-size: $font-size-ll;
+        color: $main-color;
+    }
+    &__text{
+        font-size: $font-size-lm;
+        margin-bottom: 30px;
+    }
+
+}

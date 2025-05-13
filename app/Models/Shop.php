@@ -12,6 +12,10 @@ class Shop extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    function products(){
+        return $this->hasMany(Product::class);
+    }
+
     function getBoss(){
         $employer = Employers::where('e_id', $this->s_id.'000')->first();
         return $employer;
@@ -20,6 +24,11 @@ class Shop extends Model
     function getBossFullName(){
         $employer = $this->getBoss();
         return $employer->e_sei.' '.$employer->e_mei;
+    }
+
+    function getBossEmail(){
+        $employer = $this->getBoss();
+        return $employer->email;
     }
 
     function imgUrl(){
@@ -55,12 +64,16 @@ class Shop extends Model
     }
 
     /**
-     *
+     * 本店のショップIDを返却
      */
     function getNewKeyForParentShop(){
         $s_pcd = $this->getNewShopParentCode();
         $new_key = 'S'.$s_pcd.'000';
         return $new_key;
+    }
+
+    function getPrefName(){
+        return Prefecture::select('pref_name')->where('pref_id', $this->s_pref)->first()->pref_name;
     }
 
 }

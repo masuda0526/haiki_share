@@ -9,7 +9,7 @@
             <p class="c-card-p">定価：{{ this.product.dis_price }}円</p>
             <p class="c-card-p">価格：{{ this.product.price }}円</p>
             <div class="o-btnArea-right__pb0">
-                <button class="o-btn__rad--s u-btn__mainColor">詳細を見る</button>
+                <a :href="product.p_detail_page_url" class="o-btn__rad--s u-btn__mainColor">詳細を見る</a>
             </div>
         </div>
     </div>
@@ -39,6 +39,5 @@ export default{
     mounted(){
         console.log(this.product);
     }
-
 }
 </script>

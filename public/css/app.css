@@ -8782,6 +8782,32 @@ body {
   margin-bottom: 20px;
 }
 
+.p-pdetail__content {
+  width: 970px;
+  display: flex;
+  justify-content: space-around;
+}
+.p-pdetail__img {
+  width: 500px;
+}
+.p-pdetail__img img {
+  max-width: 100%;
+  aspect-ratio: 4/3;
+  height: auto;
+}
+.p-pdetail__productName {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+.p-pdetail__disprice {
+  font-size: 32px;
+  color: #853565;
+}
+.p-pdetail__text {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
 .u-btn__mainColor {
   color: #fff;
   background-color: #853565;

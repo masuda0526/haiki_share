@@ -29,6 +29,8 @@ Route::get('/api/category', [App\Http\Controllers\Api\ApiController::class, 'get
 
 // Normal
 Route::get('/list', [\App\Http\Controllers\Normal\ListController::class, 'index'])->name('list');
+Route::get('/pdetail/{productId}', [\App\Http\Controllers\Normal\ProductDetailController::class, 'index'])->name('pdetail.index');
+
 
 // UserPage
 Route::get('/ulogin', [\App\Http\Controllers\UserPage\ULoginController::class, 'index'])->name('ulogin.index');
@@ -39,15 +41,16 @@ Route::middleware(['check.login.user'])->group(function(){
     Route::get('/umypage', [\App\Http\Controllers\UserPage\UMypageController::class, 'index'])->name('umypage.index');
     Route::get('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'index'])->name('uedit.index');
     Route::post('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'update'])->name('uedit.update');
+    Route::get('/buy/{productId}', [\App\Http\Controllers\Normal\ProductDetailController::class, 'buy'])->name('pdetail.buy');
 });
 
 // ShopPage
 Route::get('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 'index'])->name('slogin.index');
 Route::post('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 'login'])->name('slogin.login');
-Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
 Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'index'])->name('ssignup.index');
 Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');
 Route::middleware(['check.login.employer'])->group(function(){
+    Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
     Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
     Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');
     Route::get('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'index'])->name('pregist.index');

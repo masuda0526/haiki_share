@@ -12,7 +12,15 @@ use function PHPUnit\Framework\isNull;
 
 class Product extends Model
 {
-    protected $appends = ['p_img_url'];
+    protected $primaryKey = 'p_id';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+    protected $appends = ['p_img_url', 'p_detail_page_url'];
+
+    function shop(){
+        return $this->belongsTo(Shop::class);
+    }
 
     function getNewKey(){
         $p = self::select('p_id')->orderBy('p_id', 'desc')->take(1)->first()->p_id;
@@ -26,5 +34,17 @@ class Product extends Model
             return asset('img/noimg.png');
         }
         return asset('img/product/'.$this->p_img);
+    }
+
+    function getPDetailPageUrlAttribute(){
+        return route('pdetail.index', ['productId'=>$this->p_id]);
+    }
+
+    function getCategoryAndGroupName(){
+        $data = ModelUtil::getCategoryAndGroup($this->c_id);
+        if(empty($data)){
+            return '';
+        }
+        return $data['group_name'].'・'.$data['category_name'];
     }
 }
