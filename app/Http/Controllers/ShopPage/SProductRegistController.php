@@ -49,7 +49,7 @@ class SProductRegistController extends BaseShopPageController
         $product->p_id = $product->getNewKey();
         $product->s_id = $employer->s_id;
         $product->e_id = $employer->e_id;
-        if(!isNull($input['category']) && empty($input['category'])){
+        if(!empty($input['category'])){
             $product->c_id = $input['category'];
         }
         $product->p_name = $input['p_name'];

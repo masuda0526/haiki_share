@@ -1,5 +1,5 @@
 @extends('layouts.one_column_layout')
-@section('title', 'ログイン')
+@section('title', 'ログイン(従業員)')
 @section('main_content')
 <div class="l-form__w50">
     @include('layouts.error')

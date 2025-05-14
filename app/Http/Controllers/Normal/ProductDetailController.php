@@ -30,7 +30,7 @@ class ProductDetailController extends BaseController
         $isShowBuyBtn = false;
         $employer = Session::get('employer');
         if(!empty($employer)){
-            if($employer->s_id == $product->s_id){
+            if($employer->s_id == $product->s_id && $product->p_status != ProductStatusKubun::ALREADY_PARCHASED->value){
                 $isShowEditBtn = true;
             }
         }

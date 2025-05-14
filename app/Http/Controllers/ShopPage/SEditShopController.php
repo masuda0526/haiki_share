@@ -41,6 +41,10 @@ class SEditShopController extends BaseShopPageController
         /** @var App\Models\Employer $employer */
         $employer = Session::get('employer');
 
+        if($employer->hasAuth(AuthKubun::EDIT_PRODUCT->value)){
+            return redirect()->route('smypage.index');
+        }
+
         $rules = [
             'file' => 'file|mimes:jpg,jpeg,png|max:2048',
             's_name' => 'required|max:50|',
@@ -62,7 +66,7 @@ class SEditShopController extends BaseShopPageController
             $tmpFileNm = uniqid().'.'.$file->extension();
             $file->move(public_path('img'), $tmpFileNm);
             // 旧ファイルの削除
-            $oldImg = public_path('img/'.$shop->s_img);
+            $oldImg = public_path('img/shop'.$shop->s_img);
             if(File::exists($oldImg)){
                 File::delete($oldImg);
             }

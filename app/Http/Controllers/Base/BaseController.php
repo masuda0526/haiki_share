@@ -35,7 +35,7 @@ class BaseController extends Controller
     function saveFile(UploadedFile $file, String $path){
         // ファイルの保存処理
         $tmpFileNm = uniqid().'.'.$file->extension();
-        $file->move(public_path('img'), $tmpFileNm);
+        $file->move(public_path($path), $tmpFileNm);
         return $tmpFileNm;
     }
 
