@@ -9847,14 +9847,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['product'],
   data() {
     return {};
-  },
-  computed: {
-    getImgUrl() {
-      if (this.product.p_img) {
-        return this.product.p_img;
-      }
-      return 'http://localhost:8000/img/noimg.png';
-    }
   }
 });
 
@@ -10298,28 +10290,27 @@ var render = function render() {
     staticClass: "c-product__imgBox"
   }, [_c("img", {
     attrs: {
-      src: _vm.getImgUrl,
+      src: _vm.product.p_img_url,
       alt: "商品画像"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "c-product__content"
   }, [_c("div", {}, [_c("h4", {
     staticClass: "c-product__name"
-  }, [_vm._v(_vm._s(this.product.p_name))]), _vm._v(" "), _c("p", {
+  }, [_vm._v(_vm._s(_vm.product.p_name))]), _vm._v(" "), _c("p", {
     staticClass: "c-product__text"
-  }, [_vm._v("¥" + _vm._s(this.product.price) + " <- ¥" + _vm._s(this.product.dis_price))]), _vm._v(" "), _c("p", {
+  }, [_vm._v("¥" + _vm._s(_vm.product.dis_price) + " <- ¥" + _vm._s(_vm.product.price))]), _vm._v(" "), _c("p", {
     staticClass: "c-product__text"
-  }, [_vm._v("賞味期限：" + _vm._s(this.product.ex_dt))])]), _vm._v(" "), _vm._m(0)])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_vm._v("賞味期限：" + _vm._s(_vm.product.ex_dt))])]), _vm._v(" "), _c("div", {
     staticClass: "c-form__btnBox--right"
-  }, [_c("button", {
-    staticClass: "o-btn__rad u-btn__mainColor"
-  }, [_vm._v("詳細を見る")])]);
-}];
+  }, [_c("a", {
+    staticClass: "o-btn__rad u-btn__mainColor",
+    attrs: {
+      href: _vm.product.p_detail_page_url
+    }
+  }, [_vm._v("詳細を見る")])])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 

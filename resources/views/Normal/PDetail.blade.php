@@ -23,7 +23,12 @@
             @endif
         </div>
         <div class="o-btnArea-right">
-            <a href="{{ route('pdetail.buy', ['productId' => $product->p_id]) }}" class="o-btn__rad u-btn__mainColor" type="submit">購入する</a>
+            @if($isShowEditBtn)
+                <a href="" class="o-btn__rad u-btn__mainColor">編集する</a>
+            @endif
+            @if ($isShowBuyBtn)
+                <a href="{{ route('pdetail.buy', ['productId' => $product->p_id]) }}" class="o-btn__rad u-btn__mainColor">購入する</a>
+            @endif
         </div>
     </div>
 </div>

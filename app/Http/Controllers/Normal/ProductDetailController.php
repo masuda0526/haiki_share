@@ -33,9 +33,13 @@ class ProductDetailController extends BaseController
             if($employer->s_id == $product->s_id){
                 $isShowEditBtn = true;
             }
-
-            if($employer->s_id != $product->s_id || $product->p_staus != ProductStatusKubun::ALREADY_PARCHASED->value){
-                $isShowBuyBtn = true;
+        }
+        if($product->isAbleBuy()){
+            $isShowBuyBtn = true;
+            if(!empty($employer)){
+                if($employer->s_id == $product->s_id){
+                    $isShowBuyBtn = false;
+                }
             }
         }
 
@@ -52,6 +56,10 @@ class ProductDetailController extends BaseController
         $user = Session::get('user');
         if(empty($user)){
             return redirect()->route('ulogin.index');
+        }
+
+        if(!$product->isAbleBuy()){
+            return redirect()->route('list');
         }
 
         // DB更新処理

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Controllers\Utility\ModelUtil;
+use App\Http\Controllers\Utility\ProductStatusKubun;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use PHPUnit\Framework\Constraint\IsNull;
@@ -46,5 +47,9 @@ class Product extends Model
             return '';
         }
         return $data['group_name'].'・'.$data['category_name'];
+    }
+
+    function isAbleBuy(){
+        return $this->p_status == ProductStatusKubun::CURRENT_UNDER_SALE->value;
     }
 }
