@@ -51,10 +51,12 @@ Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class,
 Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');
 Route::middleware(['check.login.employer'])->group(function(){
     Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
-    Route::Get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
+    Route::get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
     Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');
     Route::get('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'index'])->name('pregist.index');
     Route::post('/pregist', [\App\Http\Controllers\ShopPage\SProductRegistController::class, 'regist'])->name('pregist.regist');
     Route::get('/pedit/{productId}', [\App\Http\Controllers\ShopPage\SProductEditController::class, 'index'])->name('pedit.index');
-    Route::post('/pedit/{productId}', [\App\Http\Controllers\ShopPage\SProductEditController::class, 'update'])->name('pedit.update');
+    Route::post('/pedit/{productId}', [\App\Http\Controllers\ShopPage\SProductEditController::class, 'submit'])->name('pedit.submit');
+    Route::get('/addemployer', [\App\Http\Controllers\ShopPage\SAddEmployerController::class, 'index'])->name('addemployer.index');
+    Route::post('/addemployer', [\App\Http\Controllers\ShopPage\SAddEmployerController::class, 'add'])->name('addemployer.add');
 });

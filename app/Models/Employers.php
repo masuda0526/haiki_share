@@ -31,4 +31,30 @@ class Employers extends Model
     function isBoss(){
         return $this->e_cd == '000';
     }
+
+    /**
+     * 新たな従業員コード（e_cd）を生成します
+     */
+    function getNewEmployerCd(String $shopId){
+        $newCd = (int)self::select('e_cd')->where('s_id', $shopId)->orderBy('e_cd', 'desc')->first()->e_cd;
+        $newCd++;
+        return str_pad($newCd, 3, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * フォームから入力された権限を登録可能な形で出力します。
+     */
+    function toStringForRegistDB(array $auths){
+        $authStr = '';
+        if(empty($auths)){
+            return $authStr;
+        }
+
+        foreach($auths as $key => $val){
+            $authStr .= $val.',';
+        }
+
+        return substr($authStr, 0, -1);
+
+    }
 }

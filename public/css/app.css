@@ -8414,6 +8414,21 @@ body {
 .c-form__formBox--half:last-child {
   margin-right: 0;
 }
+.c-form__formBox--check {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 30px;
+}
+.c-form__formBox--check input[type=checkbox] {
+  scale: 1.3;
+  width: 30px;
+}
+.c-form__formBox--check .c-check__header {
+  width: 100px;
+}
+.c-form__formBox--check .c-check__body {
+  width: calc(100% - 100px);
+}
 .c-form__btnBox--center {
   text-align: center;
 }
@@ -8806,6 +8821,11 @@ body {
 .p-pdetail__text {
   font-size: 24px;
   margin-bottom: 30px;
+}
+
+.p-saddemployer {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .u-btn__mainColor {
