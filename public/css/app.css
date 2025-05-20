@@ -8512,6 +8512,9 @@ body {
   background-color: #fff;
   border: solid 1px #000;
 }
+.c-search-section, .c-group-section {
+  margin-bottom: 10px;
+}
 .c-search h4, .c-group h4 {
   margin-bottom: 5px;
 }
@@ -8528,8 +8531,13 @@ body {
   width: calc(100% - 25px);
   border: none;
 }
+.c-search input[type=number], .c-group input[type=number] {
+  width: 70px;
+  display: inline-block;
+}
 .c-search input[type=checkbox], .c-group input[type=checkbox] {
   scale: 1.3;
+  margin-right: 10px;
 }
 .c-search li, .c-group li {
   margin-bottom: 5px;
@@ -8638,12 +8646,38 @@ body {
   opacity: 0;
 }
 
+.o-content-box {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .o-content-title {
   font-size: 24px;
   color: #853565;
-  padding: 0 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
   border-left: solid 5px #853565;
+}
+
+.o-link {
+  color: #853565;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.o-next__btn-box {
+  text-align: center;
+  padding: 15px 0;
+}
+.o-next__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.o-share__btn {
+  display: inline-block;
+  margin-right: 20px;
 }
 
 .o-btn__rad {
@@ -8826,6 +8860,15 @@ body {
 .p-saddemployer {
   width: 70%;
   margin: 0 auto;
+}
+
+.p-sremind {
+  width: 70%;
+  margin: 0 auto;
+}
+.p-sremind__msg {
+  font-size: 16px;
+  margin-bottom: 30px;
 }
 
 .u-btn__mainColor {

@@ -3,6 +3,11 @@
 const state = {
     BASE_URL:'http://localhost:8000/',
     searchText: '',
+    minPrice:null,
+    maxPrice:null,
+    prefId:0,
+    isOnlySale:false,
+    isOnlyExDt:false,
 }
 
 const getters ={
@@ -13,13 +18,23 @@ const getters ={
 
 const mutations = {
     setSearchText(state, text){
-        console.log('mutations');
-        console.log(text);
         state.searchText = text;
-        console.log('state.search_text');
-        console.log(state.searchText);
+    },
+    setMinPrice(state, num){
+        state.minPrice = num
+    },
+    setMaxPrice(state, num){
+        state.maxPrice = num
+    },
+    setPrefId(state, num){
+        state.prefId = num
+    },
+    setIsOnlySale(state, bool){
+        state.isOnlySale = bool
+    },
+    setIsOnlyExDt(state, bool){
+        state.isOnlyExDt = bool;
     }
-
 }
 
 const actions = {

@@ -27,7 +27,10 @@ class SProductEditController extends BaseShopPageController
         $employer = Session::get('employer');
 
         // 権限チェック
-        $this->check($product, $employer);
+        $response = $this->check($product, $employer);
+        if(!empty($response)){
+            return $response;
+        }
 
         $groups = Group::all();
         $apiUrl = route('api.getCategories');
@@ -137,6 +140,8 @@ class SProductEditController extends BaseShopPageController
         if(!$employer->hasAuth(AuthKubun::EDIT_PRODUCT->value)){
             return redirect()->route('smypage.index');
         }
+
+        return null;
 
     }
 }

@@ -49,6 +49,8 @@ Route::get('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, '
 Route::post('/slogin', [\App\Http\Controllers\ShopPage\SLoginController::class, 'login'])->name('slogin.login');
 Route::get('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'index'])->name('ssignup.index');
 Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class, 'signup'])->name('ssignup.signup');
+Route::get('/sremind', [\App\Http\Controllers\ShopPage\SPassReminderController::class, 'index'])->name('sremind.index');
+Route::post('/sremind', [\App\Http\Controllers\ShopPage\SPassReminderController::class, 'change'])->name('sremind.change');
 Route::middleware(['check.login.employer'])->group(function(){
     Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
     Route::get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
@@ -59,4 +61,7 @@ Route::middleware(['check.login.employer'])->group(function(){
     Route::post('/pedit/{productId}', [\App\Http\Controllers\ShopPage\SProductEditController::class, 'submit'])->name('pedit.submit');
     Route::get('/addemployer', [\App\Http\Controllers\ShopPage\SAddEmployerController::class, 'index'])->name('addemployer.index');
     Route::post('/addemployer', [\App\Http\Controllers\ShopPage\SAddEmployerController::class, 'add'])->name('addemployer.add');
+    Route::get('/editemployer/{employerId}', [\App\Http\Controllers\ShopPage\SEditEmployerController::class, 'index'])->name('editemployer.index');
+    Route::post('/editemployer', [\App\Http\Controllers\ShopPage\SEditEmployerController::class, 'edit'])->name('editemployer.edit');
+    Route::get('/slist/nowsale', [\App\Http\Controllers\ShopPage\SProductListController::class, 'nowsale'])->name('slist.nowsale');
 });

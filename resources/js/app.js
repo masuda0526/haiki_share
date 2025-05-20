@@ -11,6 +11,7 @@ import ImgInputComponent from './components/ImgInputComponent.vue';
 import ProductCardContainerComponent from './components/ProductCardContainerComponent.vue';
 import ProductCardItemComponent from './components/ProductCardItemComponent.vue';
 import ProductItemLandscapeComponent from './components/ProductItemLandscapeComponent.vue';
+import ProductListForSListComponent from './components/ProductListForSListComponent.vue';
 import ProductListLandscapeComponent from './components/ProductListLandscapeComponent.vue';
 import SearchBoxComponent from './components/SearchBoxComponent.vue';
 import store from './Store/index';
@@ -49,6 +50,7 @@ const app = new Vue({
         'area-select-component':AreaSelectComponent,
         'product-item-land':ProductItemLandscapeComponent,
         'product-list-land':ProductListLandscapeComponent,
+        'product-list-slist':ProductListForSListComponent,
         'search-box-component':SearchBoxComponent,
         'product-card-item':ProductCardItemComponent,
         'product-card-container':ProductCardContainerComponent,

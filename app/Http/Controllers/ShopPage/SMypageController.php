@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ShopPage;
 
 use App\Http\Controllers\Base\BaseShopPageController;
+use App\Http\Controllers\Utility\AuthKubun;
 use App\Http\Controllers\Utility\ProductStatusKubun;
 use App\Models\Employers;
 use App\Models\Product;
@@ -28,6 +29,22 @@ class SMypageController extends BaseShopPageController{
         // スタッフ情報を取得
         $staff = Employers::where('s_id', $employer->s_id)->get();
 
-        return view('ShopPage.SMypage', compact('employer', 'shop', 'products', 'parchaseProducts', 'staff'));
+        $isEditEmployer = $employer->hasAuth(AuthKubun::EDIT_EMPLOYER->value);
+        $isEditProduct = $employer->hasAuth(AuthKubun::EDIT_PRODUCT->value);
+        $isEditShop = $employer->hasAuth(AuthKubun::EDIT_SHOP->value);
+
+
+        return view('ShopPage.SMypage',
+            compact(
+                'employer',
+                'shop',
+                'products',
+                'parchaseProducts',
+                'staff',
+                'isEditEmployer',
+                'isEditProduct',
+                'isEditShop'
+            )
+        );
     }
 }

@@ -61,4 +61,33 @@ class BaseController extends Controller
         Mail::to($address)->send(new MailSend($viewName, $data));
     }
 
+    /**
+     * ランダムパスワード生成
+     */
+    function createNewPass(){
+        $passLength = 6;
+        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $newPass = '';
+        for($i = 0; $i < $passLength; $i++){
+            $newPass .= $str[random_int(0, strlen($str)-1)];
+        }
+        return $newPass;
+    }
+
+    /**
+     * パスワードリマインドメール送信
+     */
+    function sendPassRemindMail(String $name, String $newPass, String $address){
+
+        $data = [
+            'subject' => '新規パスワードのお知らせ',
+            'name' => $name,
+            'newPass' => $newPass
+        ];
+
+        $viewName = 'MailTemplate.RemindMail';
+
+        $this->sendEmail($address, $viewName, $data);
+
+    }
 }

@@ -23,6 +23,7 @@
             @endif
         </div>
         <div class="o-btnArea-right">
+            <a class="o-share__btn" href="{{ $xurl }}">シェア</a>
             @if($isShowEditBtn)
                 <a href="{{ route('pedit.index', ['productId' => $product->p_id]) }}" class="o-btn__rad u-btn__mainColor">編集する</a>
             @endif

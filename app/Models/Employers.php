@@ -57,4 +57,12 @@ class Employers extends Model
         return substr($authStr, 0, -1);
 
     }
+
+    /**
+     * 権限の配列を返却します。
+     */
+    function toArrayOfAuth(){
+        $array = explode(',', $this->auth);
+        return $array;
+    }
 }

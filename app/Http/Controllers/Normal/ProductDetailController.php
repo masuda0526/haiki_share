@@ -42,8 +42,11 @@ class ProductDetailController extends BaseController
                 }
             }
         }
+        $text = urlencode('出品報告:'.$product->p_name);
+        $url = urlencode(route('pdetail.index', ['productId'=>$productId]));
+        $xurl = 'https://twitter.com/intent/tweet?text='.$text.'&url='.$url;
 
-        return view('Normal.PDetail', compact('product', 'shop','isShowEditBtn', 'isShowBuyBtn'));
+        return view('Normal.PDetail', compact('product', 'shop','isShowEditBtn', 'isShowBuyBtn', 'xurl'));
     }
 
     function buy(Request $request){
