@@ -16,6 +16,7 @@
             </label>
         </div>
         <div class="c-form__btnBox--right"><a href="{{route('ssignup.signup')}}">新規登録 ＞</a></div>
+        <div class="c-form__btnBox--right u-mb3"><a href="{{route('sremind.index')}}">パスワードを忘れた方 ＞</a></div>
         <div class="c-form__btnBox--center">
             <button class="o-btn__rad u-btn__mainColor" type="submit">ログイン</button>
         </div>

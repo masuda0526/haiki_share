@@ -37,6 +37,8 @@ Route::get('/ulogin', [\App\Http\Controllers\UserPage\ULoginController::class, '
 Route::post('/ulogin', [\App\Http\Controllers\UserPage\ULoginController::class, 'login'])->name('ulogin.login');
 Route::get('/usignup', [\App\Http\Controllers\UserPage\USignupController::class, 'index'])->name('usignup.index');
 Route::post('/usignup', [\App\Http\Controllers\UserPage\USignupController::class, 'signup'])->name('usignup.signup');
+Route::get('/uremind', [\App\Http\Controllers\UserPage\UPassReminderController::class, 'index'])->name('uremind.index');
+Route::post('/uremind', [\App\Http\Controllers\UserPage\UPassReminderController::class, 'change'])->name('uremind.change');
 Route::middleware(['check.login.user'])->group(function(){
     Route::get('/umypage', [\App\Http\Controllers\UserPage\UMypageController::class, 'index'])->name('umypage.index');
     Route::get('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'index'])->name('uedit.index');
