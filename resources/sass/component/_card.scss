@@ -1,9 +1,16 @@
 .c-container__card{
     display: flex;
     justify-content: left;
+    @include response(s){
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
     &--list{
         flex-wrap: wrap;
-        margin-right: -10px;
+        gap: 10px;
+        @include response(s){
+            gap: 5px;
+        }
     }
     &--smypage{
         width: fit-content;
@@ -14,11 +21,12 @@
 .c-card{
     background-color: #fff;
     padding: 0;
-    margin-bottom: 10px;
-    margin-right: 10px;
     border-radius: 5px;
     &__col4{
-        width: calc(25% - 10px);
+        flex: 1 1 calc(25% - 10px);
+        @include response(s){
+            width: calc(50% - 5px);
+        }
     }
     &__smypage{
         width: 250px;
@@ -34,8 +42,17 @@
             object-fit: contain;
         }
     }
+    &-p{
+        @include response(s){
+            font-size: $font-size-ss;
+        }
+
+    }
     &-content{
         padding: 10px;
+        @include response(s){
+            padding: 5px;
+        }
     }
     &-title{
         margin-bottom: 5px;

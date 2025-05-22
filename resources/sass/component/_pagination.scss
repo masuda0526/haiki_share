@@ -2,8 +2,11 @@
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
+    @include response(s){
+        width: 100%;
+    }
     a{
         color: #000;
         text-decoration: none;

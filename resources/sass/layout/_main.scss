@@ -2,6 +2,9 @@
     font-size: $font-size-xl;
     text-align: center;
     padding: 30px 0;
+    @include response(s){
+        font-size: $font-size-l;
+    }
     &__sub{
         font-size: $font-size-l;
         color: $main-color;
@@ -14,9 +17,18 @@
     &--oneColumn{
         width: 970px;
         margin: 0 auto;
+        @include response(s){
+            width: 375px;
+            margin: 0 auto;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
     }
     &--twoColumn{
         width: 900px;
+        @include response(s){
+            width: 100%;
+        }
     }
 }
 .l-content__two{
@@ -24,15 +36,28 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    @include response(s){
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 }
 .l-sub{
     &__twoColumn{
         width: 250px;
+        @include response(s){
+            width: 100%;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
     }
 }
 .l-form{
     &__w50{
         width: 50%;
         margin: 0 auto;
+        @include response(s){
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 }

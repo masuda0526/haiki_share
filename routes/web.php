@@ -26,6 +26,7 @@ Route::get('/test', [\App\Http\Controllers\Base\BaseUserPageController::class, '
 // Api
 Route::get('/api/area', [App\Http\Controllers\Api\ApiController::class, 'getAreas'])->name('api.getAreas');
 Route::get('/api/category', [App\Http\Controllers\Api\ApiController::class, 'getCategories'])->name('api.getCategories');
+Route::get('/api/header', [App\Http\Controllers\Api\ApiController::class, 'getHeader'])->name('api.header');
 
 // Normal
 Route::get('/list', [\App\Http\Controllers\Normal\ListController::class, 'index'])->name('list');

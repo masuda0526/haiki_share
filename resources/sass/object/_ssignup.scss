@@ -6,8 +6,14 @@
     &__form{
         display: flex;
         justify-content: space-between;
+        @include response(s){
+            display: block;
+        }
     }
     &__container--left, &__container--right{
         width: 45%;
+        @include response(s){
+            width: 100%;
+        }
     }
 }

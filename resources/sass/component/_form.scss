@@ -11,9 +11,17 @@
         width: 100%;
         margin-bottom: 30px;
         display: flex;
+        @include response(s){
+            display: block;
+            margin-bottom: 15px;
+        }
         &--half{
             width: calc(50% - 10px);
             margin-right: 20px;
+            @include response(s){
+                width: 100%;
+                margin-bottom: 15px;
+            }
             &:last-child{
                 margin-right: 0;
             }

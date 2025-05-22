@@ -22,6 +22,9 @@
 .c-inputImg--default{
     @extend %defaultBox;
     width: 65%;
+    @include response(s){
+        width: 100%;
+    }
     img{
         @extend %defaultImg;
     }

@@ -3,7 +3,7 @@
         <input type="file" name="file" id="inputFile" accept="image/*" @change="changeInputImg">
         <img :src="imgurl" alt="" v-if="isFile || imgurl">
         <div :class="pageClass + '__dummy'" v-else="!isFile || !imgurl">
-            <p>ファイルをドラッグ＆ドロップ　または　クリック</p>
+            <p>ファイルをドラッグ＆ドロップ<br>または<br>クリック</p>
         </div>
     </div>
 </template>

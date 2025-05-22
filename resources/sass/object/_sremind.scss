@@ -5,4 +5,7 @@
         font-size: $font-size-s;
         margin-bottom: 30px;
     }
+    @include response(s){
+        width: 100%;
+    }
 }

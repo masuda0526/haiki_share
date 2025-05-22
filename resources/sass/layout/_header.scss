@@ -6,18 +6,57 @@
     background-color: $main-color;
     padding: 10px 25px;
     box-sizing: border-box;
+    @include response(s){
+        position: relative;
+        padding: 10px 5px;
+        align-items: center;
+    }
     &__logo{
         font-size: $font-size-xl;
         color:$font-color-white;
         line-height: 1;
+        @include response(s){
+            font-size: $font-size-l
+        }
     }
     &__nav{
         font-size: $font-size-m;
+        @include response(s){
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+            background-color: #aaa;
+            opacity: 0.8;
+            z-index: 10;
+            transition: all 0.5s;
+        }
+        &.onHum{
+            @include response(s){
+                transform: translateX(0);
+                transition: all 0.5s;
+            }
+        }
         & ul{
             display: flex;
+            @include response(s){
+                display: block;
+            }
         }
         & li{
             margin:0 15px;
+            @include response(s){
+                padding: 15px 0;
+                border-bottom: solid 1px #000;
+                text-align: center;
+            }
+        }
+        & li:first-child{
+            @include response(s){
+                margin-top: 80px;
+            }
         }
     }
     a{
