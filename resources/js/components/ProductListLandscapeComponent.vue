@@ -25,9 +25,5 @@ export default{
 
         }
     },
-    mounted(){
-        console.log('test')
-        console.log(this.products);
-    }
 }
 </script>

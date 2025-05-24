@@ -60,7 +60,7 @@
     </div>
     <div class="u-mb6">
         <h3 class="o-content-title">スタッフ一覧</h3>
-        <div class="u-flex u-algn-end">
+        <div class="p-smypage__staffbox">
             <div class="p-smypage__staff">
                 <div class="p-smypage__row">
                     <div class="p-smypage__col">No.</div>

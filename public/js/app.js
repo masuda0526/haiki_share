@@ -9581,9 +9581,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(res => {
         this.prefs = res.data;
-      }).catch(err => {
-        console.log(err);
-      });
+      }).catch(err => {});
     }
   },
   mounted() {
@@ -9598,7 +9596,6 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.user_pref = '';
     }
-    console.log(String(this.user_pref));
   }
 });
 
@@ -9659,10 +9656,6 @@ __webpack_require__.r(__webpack_exports__);
         this.categories = res.data;
       });
     }
-  },
-  mounted() {
-    console.log(this.groups);
-    console.log(this.apiurl);
   }
 });
 
@@ -9679,11 +9672,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted() {
-    console.log('Component mounted.');
-  }
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -9707,23 +9696,26 @@ __webpack_require__.r(__webpack_exports__);
       url: '/api/header',
       nav: [],
       isShow: false,
-      isMobile: window.innerWidth <= 576
+      isMobile: window.innerWidth <= 576,
+      isScroll: false
     };
   },
   mounted() {
     window.addEventListener('resize', this.resize);
+    window.addEventListener('scroll', this.scroll);
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.resize);
+    window.removeEventListener('scroll', this.scroll);
   },
   methods: {
     click() {
-      console.log('click');
-      console.log(window.innerWidth);
-      console.log(this.isMobile);
       this.isShow = !this.isShow;
     },
-    showMenu() {},
+    scroll() {
+      let border = 55;
+      this.isScroll = window.scrollY > border;
+    },
     resize() {
       this.isMobile = window.innerWidth <= 576;
     }
@@ -9731,7 +9723,6 @@ __webpack_require__.r(__webpack_exports__);
   async created() {
     let res = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(this.url);
     this.nav = res.data;
-    console.log(this.nav);
   }
 });
 
@@ -9795,8 +9786,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted() {
     if (this.dburl) {
       this.imgurl = this.dburl;
-      console.log(this.dburl);
-      console.log(this.imgurl);
     }
   }
 });
@@ -9873,9 +9862,6 @@ __webpack_require__.r(__webpack_exports__);
         'smypage': 'c-card__smypage'
       }[this.foruse] || 'c-card__col4';
     }
-  },
-  mounted() {
-    console.log(this.product);
   }
 });
 
@@ -10026,13 +10012,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
       const limit = this.initialProductCnt * this.page;
       return filtered.slice(0, limit);
     }
-  }),
-  mounted() {
-    console.log(this.products);
-  },
-  watch: {
-    searchText() {}
-  }
+  })
 });
 
 /***/ }),
@@ -10058,10 +10038,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data() {
     return {};
-  },
-  mounted() {
-    console.log('test');
-    console.log(this.products);
   }
 });
 
@@ -10103,7 +10079,9 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
       max_price: null,
       pref_id: 0,
       isSale: false,
-      isExDt: false
+      isExDt: false,
+      isMobile: window.innerWidth <= 576,
+      onSearch: false
     };
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)('data', ['setSearchText', 'setMinPrice', 'setMaxPrice', 'setPrefId', 'setIsOnlySale', 'setIsOnlyExDt'])), {}, {
@@ -10124,6 +10102,12 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     },
     changeIsOnlyExDt() {
       this.setIsOnlyExDt(this.isExDt);
+    },
+    resizeSearchBox() {
+      this.isMobile = window.innerWidth <= 576;
+    },
+    clickIcon() {
+      this.onSearch = !this.onSearch;
     }
   }),
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)('data', ['searchText', 'minPrice', 'maxPrice', 'prefId', 'isOnlySale', 'isOnlyExDt'])),
@@ -10131,6 +10115,10 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     if (this.prefs) {
       this.isPrefBox = true;
     }
+    window.addEventListener('resize', this.resizeSearchBox);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.resizeSearchBox);
   }
 });
 
@@ -10440,19 +10428,22 @@ var render = function render() {
     class: {
       line: true,
       line_top: true,
-      onHum: _vm.isShow
+      onHum: _vm.isShow,
+      isscroll: _vm.isScroll
     }
   }), _vm._v(" "), _c("div", {
     class: {
       line: true,
       line_middle: true,
-      onHum: _vm.isShow
+      onHum: _vm.isShow,
+      isscroll: _vm.isScroll
     }
   }), _vm._v(" "), _c("div", {
     class: {
       line: true,
       line_bottom: true,
-      onHum: _vm.isShow
+      onHum: _vm.isShow,
+      isscroll: _vm.isScroll
     }
   })]) : _vm._e()])]);
 };
@@ -10727,8 +10718,21 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "c-search"
+  return _c("div", [_vm.isMobile ? _c("div", {
+    on: {
+      click: _vm.clickIcon
+    }
+  }, [_c("div", {
+    staticClass: "c-search-icon"
+  }, [_vm.onSearch ? _c("i", {
+    staticClass: "fa-solid fa-xmark"
+  }) : _c("i", {
+    staticClass: "fa-solid fa-magnifying-glass"
+  })])]) : _vm._e(), _vm._v(" "), _vm.isMobile && _vm.onSearch || !_vm.isMobile ? _c("div", {
+    staticClass: "c-search",
+    class: {
+      mobile: _vm.isMobile
+    }
   }, [_c("div", {
     staticClass: "c-search-section"
   }, [_c("h4", [_vm._v("商品を検索")]), _vm._v(" "), _c("div", {
@@ -10780,7 +10784,7 @@ var render = function render() {
         _vm.min_price = $event.target.value;
       }
     }
-  }), _vm._v("\n         -\n        "), _c("input", {
+  }), _vm._v("\n             -\n            "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10870,7 +10874,7 @@ var render = function render() {
         }
       }, _vm.changeIsOnlySale]
     }
-  }), _vm._v("販売中\n        ")]) : _vm._e(), _vm._v(" "), _c("div", [_c("input", {
+  }), _vm._v("販売中\n            ")]) : _vm._e(), _vm._v(" "), _c("div", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10903,7 +10907,7 @@ var render = function render() {
         }
       }, _vm.changeIsOnlyExDt]
     }
-  }), _vm._v("賞味期限以内\n        ")])])]);
+  }), _vm._v("賞味期限以内\n            ")])])]) : _vm._e()]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

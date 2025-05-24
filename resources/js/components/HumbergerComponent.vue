@@ -26,9 +26,6 @@ export default{
     },
     methods:{
         click(){
-            console.log('click');
-            console.log(window.innerWidth);
-            console.log(this.isMobile);
         },
         showMenu(){
 
@@ -37,7 +34,6 @@ export default{
     async created(){
         let res = await axios.get(this.url);
         this.nav = res.data;
-        console.log(this.nav);
     }
 
 }

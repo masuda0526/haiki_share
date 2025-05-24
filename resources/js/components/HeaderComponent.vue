@@ -8,9 +8,9 @@
     </nav>
     <div class="c-hum__pos">
         <div class="c-hum" v-if="isMobile" @click="click">
-                <div :class="{line: true, line_top:true, onHum:isShow}"></div>
-                <div :class="{line: true, line_middle:true, onHum:isShow}"></div>
-                <div :class="{line: true, line_bottom:true, onHum:isShow}"></div>
+                <div :class="{line: true, line_top:true, onHum:isShow, isscroll:isScroll}"></div>
+                <div :class="{line: true, line_middle:true, onHum:isShow, isscroll:isScroll}"></div>
+                <div :class="{line: true, line_bottom:true, onHum:isShow, isscroll:isScroll}"></div>
         </div>
     </div>
 </header>
@@ -26,23 +26,24 @@ export default{
             nav:[],
             isShow:false,
             isMobile:window.innerWidth <= 576,
+            isScroll:false,
         }
     },
     mounted(){
         window.addEventListener('resize', this.resize);
+        window.addEventListener('scroll', this.scroll);
     },
     beforeUnmount(){
         window.removeEventListener('resize', this.resize)
+        window.removeEventListener('scroll', this.scroll);
     },
     methods:{
         click(){
-            console.log('click');
-            console.log(window.innerWidth);
-            console.log(this.isMobile);
             this.isShow = !this.isShow;
         },
-        showMenu(){
-
+        scroll(){
+            let border = 55;
+            this.isScroll = window.scrollY > border;
         },
         resize(){
             this.isMobile = window.innerWidth <= 576;
@@ -51,7 +52,6 @@ export default{
     async created(){
         let res = await axios.get(this.url);
         this.nav = res.data;
-        console.log(this.nav);
     }
 
 }

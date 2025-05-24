@@ -136,13 +136,5 @@ export default{
             return filtered.slice(0, limit);
         }
     },
-    mounted(){
-        console.log(this.products);
-    },
-    watch:{
-        searchText(){
-
-        }
-    }
 }
 </script>

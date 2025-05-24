@@ -43,7 +43,6 @@ export default{
             ).then(res=>{
                 this.prefs = res.data;
             }).catch(err => {
-                console.log(err);
             })
         },
 
@@ -60,7 +59,6 @@ export default{
         }else{
             this.user_pref = '';
         }
-        console.log(String(this.user_pref))
 
     }
 }

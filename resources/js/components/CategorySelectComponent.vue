@@ -74,9 +74,5 @@ export default{
             })
         }
     },
-    mounted(){
-        console.log(this.groups);
-        console.log(this.apiurl);
-    }
 }
 </script>

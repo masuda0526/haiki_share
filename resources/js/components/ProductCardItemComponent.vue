@@ -36,8 +36,5 @@ export default{
             }[this.foruse] ||'c-card__col4';
         }
     },
-    mounted(){
-        console.log(this.product);
-    }
 }
 </script>

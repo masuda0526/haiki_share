@@ -1,6 +1,6 @@
 @extends('layouts.one_column_layout')
 
-@section('title', '新規登録')
+@section('title', '店舗編集')
 
 @section('main_content')
 

@@ -14,6 +14,9 @@
         height: 4px;
         border-radius: 2px;
         background-color: #fff;
+        &_top.isscroll,&_bottom.isscroll,&_middle.isscroll{
+            background-color: $main-color;
+        }
         &_top{
             top: 0;
             transition: all 0.5s;

@@ -2,19 +2,20 @@
     display: flex;
     justify-content: left;
     @include response(s){
-        padding: 0 5px;
         box-sizing: border-box;
     }
     &--list{
         flex-wrap: wrap;
         gap: 10px;
         @include response(s){
+            justify-content: space-between;
             gap: 5px;
         }
     }
     &--smypage{
         width: fit-content;
         white-space: nowrap;
+        gap: 5px;
     }
 }
 
@@ -23,9 +24,11 @@
     padding: 0;
     border-radius: 5px;
     &__col4{
-        flex: 1 1 calc(25% - 10px);
+        // flex: 1 1 calc(25% - 10px);
+        width: calc(25% - 10px);
         @include response(s){
-            width: calc(50% - 5px);
+            // flex:1 1 calc(50% - 5px);
+            width: calc(50% - 2.5px);
         }
     }
     &__smypage{

@@ -56,8 +56,6 @@
         mounted(){
             if(this.dburl){
                 this.imgurl = this.dburl;
-                console.log(this.dburl);
-                console.log(this.imgurl);
             }
         }
 
