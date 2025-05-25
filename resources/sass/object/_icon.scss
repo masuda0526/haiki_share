@@ -1,0 +1,11 @@
+.isbuy::after{
+    content: '販売済';
+    background-color:#000;
+    color: #fff;
+    opacity: 0.7;
+    padding: 3px;
+    border-radius: 5px 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

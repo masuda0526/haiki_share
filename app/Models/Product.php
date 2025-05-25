@@ -52,4 +52,8 @@ class Product extends Model
     function isAbleBuy(){
         return $this->p_status == ProductStatusKubun::CURRENT_UNDER_SALE->value;
     }
+
+    function isAbleCancel(String $userId){
+        return $this->p_status == ProductStatusKubun::ALREADY_PARCHASED->value && $this->u_id == $userId;
+    }
 }

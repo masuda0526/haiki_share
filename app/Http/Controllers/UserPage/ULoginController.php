@@ -26,14 +26,21 @@ class ULoginController extends BaseUserPageController
         ];
         $this->validate($request, $rules);
         $user = User::where('email', $email)->first();
-        Log::debug('debug======================',['user'=>$user]);
+        if(empty($user)){
+            return back()->withInput($request->all())->withErrors(['nomatchpass'=>'メールアドレスまたはパスワードが一致しません']);
+        }
         $hash = hash('sha256', $pass);
         if($hash != $user->password){
             return back()->withInput($request->all())->withErrors(['nomatchpass'=>'メールアドレスまたはパスワードが一致しません']);
         }
-
+        Session::invalidate();
         Session::put('user', $user);
 
         return redirect()->route('umypage.index');
+    }
+
+    function logout(){
+        Session::invalidate();
+        return redirect()->route('ulogin.index');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Utility;
 use App\Models\Category;
 use App\Models\Group;
 use App\Models\Prefecture;
+use App\Models\Region;
 use Illuminate\Support\Facades\Log;
 
 class ModelUtil{
@@ -72,5 +73,20 @@ class ModelUtil{
         return $data['group_name'];
     }
 
+    /**
+     * カテゴリーIDから属するグループのIDを返却します
+     */
+    public static function getGroupId($category_id){
+        $category = Category::find($category_id);
+        $group = Group::find($category->g_id);
+        return $group->g_id;
+    }
 
+    /**
+     * 都道府県IDから地域IDを返却します。
+     */
+    public static function getRegionIdByPrefId(String $prefId):int{
+        $pref = Prefecture::where('pref_id', $prefId)->first();
+        return $pref->r_id;
+    }
 }

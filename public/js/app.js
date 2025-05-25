@@ -9584,12 +9584,12 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(err => {});
     }
   },
-  mounted() {
+  async created() {
     if (!this.r_id) {
       this.region_id = 0;
     } else {
       this.region_id = this.r_id;
-      this.getAreas();
+      await this.getAreas();
     }
     if (this.u_pref) {
       this.user_pref = String(this.u_pref);
@@ -9643,6 +9643,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     changeGroup(e) {
       this.groupNum = e.target.value;
+      this.categoryNum = 0;
       if (this.groupNum != 0) {
         this.getCategories(this.groupNum);
       }
@@ -9655,6 +9656,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(res => {
         this.categories = res.data;
       });
+    }
+  },
+  async created() {
+    if (this.dbGroupNum) {
+      this.groupNum = this.dbGroupNum;
+      await this.getCategories(this.groupNum);
+    }
+    if (this.dbCategoryNum) {
+      this.categoryNum = this.dbCategoryNum;
     }
   }
 });
@@ -9861,6 +9871,9 @@ __webpack_require__.r(__webpack_exports__);
         'list': 'c-card__col4',
         'smypage': 'c-card__smypage'
       }[this.foruse] || 'c-card__col4';
+    },
+    isBuy() {
+      return this.product.p_status == 1 ? 'isbuy' : '';
     }
   }
 });
@@ -10035,9 +10048,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ProductList',
   components: {
     'product-item-land': _ProductItemLandscapeComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data() {
-    return {};
   }
 });
 
@@ -10151,17 +10161,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    click() {
-      console.log('click');
-      console.log(window.innerWidth);
-      console.log(this.isMobile);
-    },
+    click() {},
     showMenu() {}
   },
   async created() {
     let res = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(this.url);
     this.nav = res.data;
-    console.log(this.nav);
   }
 });
 
@@ -10257,7 +10262,7 @@ var render = function render() {
   }, [_vm._v("選択してください")]), _vm._v(" "), _vm._l(_vm.prefs, function (pref) {
     return _c("option", {
       domProps: {
-        value: String(pref.pref_id)
+        value: pref.pref_id
       }
     }, [_vm._v(_vm._s(pref.pref_name))]);
   })], 2) : _c("select", {
@@ -10297,11 +10302,25 @@ var render = function render() {
       for: "group"
     }
   }, [_vm._v("分類\n            "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.groupNum,
+      expression: "groupNum"
+    }],
     attrs: {
       name: "group"
     },
     on: {
-      change: _vm.changeGroup
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.groupNum = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }, _vm.changeGroup]
     }
   }, [_c("option", {
     attrs: {
@@ -10326,21 +10345,41 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      value: "0",
-      selected: ""
+      value: "0"
     }
   }, [_vm._v("分類を選択してください")])]) : _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.categoryNum,
+      expression: "categoryNum"
+    }],
     attrs: {
       name: "category"
+    },
+    on: {
+      change: function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.categoryNum = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
     }
-  }, _vm._l(_vm.categories, function (category) {
+  }, [_c("option", {
+    attrs: {
+      value: "0"
+    }
+  }, [_vm._v("選択してください")]), _vm._v(" "), _vm._l(_vm.categories, function (category) {
     return _c("option", {
       key: category.c_id,
       domProps: {
         value: category.c_id
       }
     }, [_vm._v(_vm._s(category.c_name))]);
-  }), 0)])])]);
+  })], 2)])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -10554,13 +10593,12 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    class: ["c-card", _vm.forUseClass]
+    class: ["c-card", _vm.forUseClass, _vm.isBuy]
   }, [_c("div", {
     staticClass: "c-card-img"
   }, [_c("img", {
     attrs: {
-      src: _vm.product.p_img_url,
-      alt: ""
+      src: _vm.product.p_img_url
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "c-card-content"
@@ -10570,9 +10608,9 @@ var render = function render() {
     staticClass: "c-card-p"
   }, [_vm._v("賞味期限：" + _vm._s(this.product.ex_dt))]), _vm._v(" "), _c("p", {
     staticClass: "c-card-p"
-  }, [_vm._v("定価：" + _vm._s(this.product.dis_price) + "円")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("定価：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _c("p", {
     staticClass: "c-card-p"
-  }, [_vm._v("価格：" + _vm._s(this.product.price) + "円")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("価格：" + _vm._s(this.product.dis_price) + "円")]), _vm._v(" "), _c("div", {
     staticClass: "o-btnArea-right__pb0"
   }, [_c("a", {
     staticClass: "o-btn__rad--s u-btn__mainColor",
@@ -10617,7 +10655,7 @@ var render = function render() {
     staticClass: "c-product__name"
   }, [_vm._v(_vm._s(_vm.product.p_name))]), _vm._v(" "), _c("p", {
     staticClass: "c-product__text"
-  }, [_vm._v("¥" + _vm._s(_vm.product.dis_price) + " <- ¥" + _vm._s(_vm.product.price))]), _vm._v(" "), _c("p", {
+  }, [_vm._v("¥" + _vm._s(_vm.product.dis_price) + " ← ¥" + _vm._s(_vm.product.price))]), _vm._v(" "), _c("p", {
     staticClass: "c-product__text"
   }, [_vm._v("賞味期限：" + _vm._s(_vm.product.ex_dt))])]), _vm._v(" "), _c("div", {
     staticClass: "c-form__btnBox--right"
@@ -10688,14 +10726,14 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm.products ? _c("div", _vm._l(_vm.products, function (product) {
+  return _c("div", _vm._l(_vm.products, function (product) {
     return _c("product-item-land", {
       key: product.p_id,
       attrs: {
         product: product
       }
     });
-  }), 1) : _c("div", [_c("p", [_vm._v("購入した商品はありません。")])]);
+  }), 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

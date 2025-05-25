@@ -30,6 +30,9 @@
             @if ($isShowBuyBtn)
                 <a href="{{ route('pdetail.buy', ['productId' => $product->p_id]) }}" class="o-btn__rad u-btn__mainColor">購入する</a>
             @endif
+            @if ($isShowCancelBtn)
+                <a href="{{ route('pdetail.cancel', ['productId' => $product->p_id]) }}" class="o-btn__rad u-btn__mainColor">キャンセル</a>
+            @endif
         </div>
     </div>
 </div>

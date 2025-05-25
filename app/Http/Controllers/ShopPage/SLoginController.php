@@ -42,9 +42,14 @@ class SLoginController extends BaseShopPageController{
         }
 
         // セッションへ雇用者情報を格納
+        Session::invalidate();
         Session::put('employer', $employer);
 
         return redirect()->route('smypage.index');
     }
 
+    function logout(){
+        Session::invalidate();
+        return redirect()->route('slogin.login');
+    }
 }

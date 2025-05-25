@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class ApiController extends BaseController
 {
@@ -36,6 +37,8 @@ class ApiController extends BaseController
     }
 
     function getHeader(){
+        $isEmployer = !empty(Session::get('employer'));
+        $isUser = !empty(Session::get('user'));
         $nav = [
             [
                 'name'=>'TOP',
@@ -45,24 +48,38 @@ class ApiController extends BaseController
                 'name'=>'商品一覧',
                 'url'=>route('list')
             ],
+        ];
+        if($isEmployer){
+            $nav[] =
             [
                 'name'=>'従業員ページ',
                 'url'=>route('smypage.index')
-            ],
-            [
+            ];
+            $nav[]=[
+                'name'=>'ログアウト',
+                'url'=>route('slogin.logout')
+            ];
+        }
+        if($isUser){
+            $nav[]=[
                 'name'=>'利用者ページ',
                 'url'=>route('umypage.index')
-            ],
-            [
+            ];
+            $nav[]=[
+                'name'=>'ログアウト',
+                'url'=>route('ulogin.logout')
+            ];
+        }
+        if(!$isEmployer && !$isUser){
+            $nav[]=[
                 'name'=>'従業員ログイン',
                 'url'=>route('slogin.index')
-            ],
-            [
+            ];
+            $nav[]=[
                 'name'=>'利用者ログイン',
                 'url'=>route('ulogin.index')
-            ],
-        ];
-
+            ];
+        }
         return response()->json($nav);
     }
 }

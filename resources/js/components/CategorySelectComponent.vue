@@ -2,7 +2,7 @@
     <div class="c-form__formBox">
         <div class="c-form__formBox--half">
             <label for="group">分類
-                <select name="group" @change="changeGroup">
+                <select name="group" @change="changeGroup" v-model="groupNum">
                     <option value="0">選択してください</option>
                     <option
                     v-for="group in groups"
@@ -16,9 +16,10 @@
         <div class="c-form__formBox--half">
             <label for="category">カテゴリ
                 <select name="category" v-if="categories.length == 0">
-                    <option value="0" selected>分類を選択してください</option>
+                    <option value="0">分類を選択してください</option>
                 </select>
-                <select name="category" v-else>
+                <select name="category" v-else v-model="categoryNum">
+                    <option value="0" >選択してください</option>
                     <option
                     v-for="category in categories"
                     :value="category.c_id"
@@ -60,6 +61,7 @@ export default{
     methods:{
         changeGroup(e){
             this.groupNum = e.target.value;
+            this.categoryNum = 0;
             if(this.groupNum != 0){
                 this.getCategories(this.groupNum);
             }
@@ -74,5 +76,14 @@ export default{
             })
         }
     },
+    async created(){
+        if(this.dbGroupNum){
+            this.groupNum = this.dbGroupNum;
+            await this.getCategories(this.groupNum);
+        }
+        if(this.dbCategoryNum){
+            this.categoryNum = this.dbCategoryNum;
+        }
+    }
 }
 </script>

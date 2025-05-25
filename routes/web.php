@@ -31,6 +31,7 @@ Route::get('/api/header', [App\Http\Controllers\Api\ApiController::class, 'getHe
 // Normal
 Route::get('/list', [\App\Http\Controllers\Normal\ListController::class, 'index'])->name('list');
 Route::get('/pdetail/{productId}', [\App\Http\Controllers\Normal\ProductDetailController::class, 'index'])->name('pdetail.index');
+Route::get('/pdetail/cancel/{productId}', [\App\Http\Controllers\Normal\ProductDetailController::class, 'cancel'])->name('pdetail.cancel');
 
 
 // UserPage
@@ -41,6 +42,7 @@ Route::post('/usignup', [\App\Http\Controllers\UserPage\USignupController::class
 Route::get('/uremind', [\App\Http\Controllers\UserPage\UPassReminderController::class, 'index'])->name('uremind.index');
 Route::post('/uremind', [\App\Http\Controllers\UserPage\UPassReminderController::class, 'change'])->name('uremind.change');
 Route::middleware(['check.login.user'])->group(function(){
+    Route::get('/ulogout', [\App\Http\Controllers\UserPage\ULoginController::class, 'logout'])->name('ulogin.logout');
     Route::get('/umypage', [\App\Http\Controllers\UserPage\UMypageController::class, 'index'])->name('umypage.index');
     Route::get('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'index'])->name('uedit.index');
     Route::post('/uedit', [\App\Http\Controllers\UserPage\UEditController::class, 'update'])->name('uedit.update');
@@ -55,6 +57,7 @@ Route::post('/ssignup', [\App\Http\Controllers\ShopPage\SSignupController::class
 Route::get('/sremind', [\App\Http\Controllers\ShopPage\SPassReminderController::class, 'index'])->name('sremind.index');
 Route::post('/sremind', [\App\Http\Controllers\ShopPage\SPassReminderController::class, 'change'])->name('sremind.change');
 Route::middleware(['check.login.employer'])->group(function(){
+    Route::get('/slogout', [\App\Http\Controllers\ShopPage\SLoginController::class, 'logout'])->name('slogin.logout');
     Route::get('/smypage', [\App\Http\Controllers\ShopPage\SMypageController::class, 'index'])->name('smypage.index');
     Route::get('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'index'])->name('editshop.index');
     Route::post('/editshop', [\App\Http\Controllers\ShopPage\SEditShopController::class, 'update'])->name('editshop.update');

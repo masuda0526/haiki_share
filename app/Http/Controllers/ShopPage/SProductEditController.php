@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ShopPage;
 use App\Http\Controllers\Base\BaseShopPageController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Utility\AuthKubun;
+use App\Http\Controllers\Utility\ModelUtil;
 use App\Http\Controllers\Utility\PathKubun;
 use App\Http\Controllers\Utility\ProductStatusKubun;
 use App\Models\Employers;
@@ -35,8 +36,9 @@ class SProductEditController extends BaseShopPageController
         $groups = Group::all();
         $apiUrl = route('api.getCategories');
         $productStatus = ProductStatusKubun::valueToLabel();
+        $dbGroupNum = ModelUtil::getGroupId($product->c_id);
 
-        return view('ShopPage.SProductEdit', compact('product', 'groups', 'apiUrl', 'productStatus'));
+        return view('ShopPage.SProductEdit', compact('product', 'groups', 'apiUrl', 'productStatus', 'dbGroupNum'));
     }
 
     function submit(Request $request){

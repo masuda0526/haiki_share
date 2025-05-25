@@ -12,7 +12,7 @@
                 <label for="pref">都道府県
                     <select class="" name="pref" id="" v-if="prefs" v-model="user_pref">
                         <option value="00">選択してください</option>
-                        <option v-for="pref in prefs" :value="String(pref.pref_id)">{{ pref.pref_name }}</option>
+                        <option v-for="pref in prefs" :value="pref.pref_id">{{ pref.pref_name }}</option>
                     </select>
                     <select class="" name="pref" id="" v-else>
                     </select>
@@ -45,14 +45,13 @@ export default{
             }).catch(err => {
             })
         },
-
     },
-    mounted(){
+    async created(){
         if(!this.r_id){
             this.region_id = 0;
         }else{
             this.region_id = this.r_id;
-            this.getAreas();
+            await this.getAreas();
         }
         if(this.u_pref){
             this.user_pref = String(this.u_pref);
@@ -60,6 +59,6 @@ export default{
             this.user_pref = '';
         }
 
-    }
+    },
 }
 </script>

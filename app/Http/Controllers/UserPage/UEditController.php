@@ -16,9 +16,10 @@ class UEditController extends BaseUserPageController
     // 初期表示
     function index(){
         $user = Session::get('user');
-        Log::debug('DEBUG:', [$user->u_pref]);
+        if(empty($user)){
+            return redirect()->route('ulogin.index');
+        }
         $r_id = Prefecture::where('pref_id', $user->u_pref)->first()->r_id;
-        Log::debug('DEBUG:', [$r_id]);
         $regions = Region::all();
         $apiurl = route('api.getAreas');
         return view('UserPage.UEdit', compact('user', 'regions', 'apiurl', 'r_id'));
@@ -41,11 +42,14 @@ class UEditController extends BaseUserPageController
         }
 
         $prevUser = Session::get('user');
+        if(empty($prevUser)){
+            return redirect()->route('ulogin.index');
+        }
         // メールアドレス重複チェック
         if(!parent::checkDupEmail($input['email']) && $input['email'] != $prevUser->email){
             return back()->withInput($request->all())->withErrors(['duplicate_email'=>'このメールアドレスはすでに登録されています。']);
         }
-        Log::debug('uedit.update', [$prevUser]);
+
         $user = User::find($prevUser->u_id);
         $user->u_sei = $input['u_sei'];
         $user->u_mei = $input['u_mei'];

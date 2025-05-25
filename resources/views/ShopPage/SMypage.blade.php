@@ -48,7 +48,7 @@
             <a class="o-link" href="{{ route('slist.nowsale') }}">一覧へ ＞</a>
         </div>
         <div class="p-smypage__product p-smypage__product-parchased">
-            @if (count($parchaseProducts))
+            @if (!empty($parchaseProducts))
                 <product-card-container
                 :products='@json($parchaseProducts)'
                 containeruse='smypage'

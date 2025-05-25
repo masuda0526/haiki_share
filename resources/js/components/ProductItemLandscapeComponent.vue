@@ -6,7 +6,7 @@
         <div class="c-product__content">
             <div class="">
                 <h4 class="c-product__name">{{ product.p_name }}</h4>
-                <p class="c-product__text">¥{{product.dis_price}} <- ¥{{product.price}}</p>
+                <p class="c-product__text">¥{{product.dis_price}} ← ¥{{product.price}}</p>
                 <p class="c-product__text">賞味期限：{{ product.ex_dt }}</p>
             </div>
             <div class="c-form__btnBox--right">

@@ -25,9 +25,10 @@ class ProductDetailController extends BaseController
         }
         $shop = Shop::find($product->s_id);
 
-        // 編集ボタンと購入ボタンの表示・非表示
+        // 編集ボタン、購入ボタン、キャンセルボタンの表示・非表示
         $isShowEditBtn = false;
         $isShowBuyBtn = false;
+        $isShowCancelBtn = false;
         $employer = Session::get('employer');
         if(!empty($employer)){
             if($employer->s_id == $product->s_id && $product->p_status != ProductStatusKubun::ALREADY_PARCHASED->value){
@@ -42,11 +43,17 @@ class ProductDetailController extends BaseController
                 }
             }
         }
+        $user = Session::get('user');
+        if(!empty($user)){
+            if($product->u_id == $user->u_id){
+                $isShowCancelBtn = true;
+            }
+        }
         $text = urlencode('出品報告:'.$product->p_name);
         $url = urlencode(route('pdetail.index', ['productId'=>$productId]));
         $xurl = 'https://twitter.com/intent/tweet?text='.$text.'&url='.$url;
 
-        return view('Normal.PDetail', compact('product', 'shop','isShowEditBtn', 'isShowBuyBtn', 'xurl'));
+        return view('Normal.PDetail', compact('product', 'shop','isShowEditBtn', 'isShowBuyBtn', 'isShowCancelBtn', 'xurl'));
     }
 
     function buy(Request $request){
@@ -81,9 +88,32 @@ class ProductDetailController extends BaseController
         $this->sendBuyMailForEmployer($product, $shop, $employer, $user);
         $this->sendBuyMailForUser($product, $shop, $user);
 
-        return redirect()->route('list');
+        return redirect()->route('umypage.index');
     }
 
+    function cancel(Request $request){
+        $productId = $request->route('productId');
+        $product = Product::find($productId);
+
+        if(empty($product)){
+            return redirect()->route('list');
+        }
+
+        $user = Session::get('user');
+        if(empty($user)){
+            return redirect()->route('ulogin.index');
+        }
+
+        if(!$product->isAbleCancel($user->u_id)){
+            return redirect()->route('list');
+        }
+
+        $product->u_id = null;
+        $product->p_status = ProductStatusKubun::CURRENT_UNDER_SALE->value;
+        $product->save();
+
+        return redirect()->route('umypage.index');
+    }
     /**
      * 店長へメール送信を行います。
      */

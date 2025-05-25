@@ -34,8 +34,11 @@
                     </label>
                 </div>
                 <category-input
-                :groups=@json($groups)
-                :apiurl="'{{ $apiUrl }}'"></category-input>
+                :groups='@json($groups)'
+                :apiurl="'{{ $apiUrl }}'"
+                :db-group-num='{{ $dbGroupNum }}'
+                :db-category-num='{{ $product->c_id }}'
+                ></category-input>
                 <div class="c-form__formBox">
                     <label for="ex_dt">賞味期限
                         <input type="date" name="ex_dt" value="{{old('ex_dt', $product->ex_dt)}}">

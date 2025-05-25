@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ShopPage;
 use App\Http\Controllers\Base\BaseShopPageController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Utility\AuthKubun;
+use App\Http\Controllers\Utility\ModelUtil;
 use App\Models\Region;
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -27,12 +28,12 @@ class SEditShopController extends BaseShopPageController
 
         // 店舗情報を取得
         $shop = Shop::where('s_id', $employer->s_id)->first();
-        // dd($shop);
 
         // 表示用
         $regions = Region::all();
         $apiurl = route('api.getAreas');
-        return view('ShopPage.SEditShop', compact('regions', 'apiurl', 'shop'));
+        $r_id = ModelUtil::getRegionIdByPrefId($shop->s_pref);
+        return view('ShopPage.SEditShop', compact('regions', 'apiurl', 'shop', 'r_id'));
     }
 
     function update(Request $request){
@@ -41,7 +42,7 @@ class SEditShopController extends BaseShopPageController
         /** @var App\Models\Employer $employer */
         $employer = Session::get('employer');
 
-        if($employer->hasAuth(AuthKubun::EDIT_PRODUCT->value)){
+        if(!$employer->hasAuth(AuthKubun::EDIT_PRODUCT->value)){
             return redirect()->route('smypage.index');
         }
 
@@ -54,7 +55,7 @@ class SEditShopController extends BaseShopPageController
         ];
 
         // バリデーション
-        $validation = $request->validate($rules);
+        $request->validate($rules);
 
         $input = $request->all();
         $shop = Shop::where('s_id', $employer->s_id)->first();
@@ -77,7 +78,7 @@ class SEditShopController extends BaseShopPageController
         $shop->s_stn = $input['s_stn'];
         $shop->s_pref = $input['pref'];
         $shop->s_adrs = $input['s_adrs'];
-        $shop->update();
+        $shop->save();
 
         return redirect()->route('smypage.index');
 
