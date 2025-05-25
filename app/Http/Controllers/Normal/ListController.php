@@ -17,7 +17,7 @@ class ListController extends Controller
 
         $query = Product::query();
 
-        $query->whereNotIn('p_status', [ProductStatusKubun::DELETE_PRODUCT]);
+        $query->whereNotIn('p_status', [ProductStatusKubun::DELETE_PRODUCT->value, ProductStatusKubun::CANCEL_SALE->value]);
 
         // 検索ワードがあれば条件追加
         if($request->filled('keyword')){
@@ -61,6 +61,8 @@ class ListController extends Controller
         if($request->filled('inExDt')){
             $query->where('ex_dt', '>=', now());
         }
+
+        $query->orderBy('created_at', 'desc');
 
         $isSaleVal = ProductStatusKubun::CURRENT_UNDER_SALE->value;
         $products = $query->paginate(12)->appends($request->query());

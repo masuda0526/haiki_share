@@ -25,14 +25,36 @@ class SProductListController extends BaseShopPageController
         }
 
         $products = Product::whereSId($employer->s_id)
-                    ->wherePStatus(ProductStatusKubun::CURRENT_UNDER_SALE->value)
+                    ->whereIn('p_status', [ProductStatusKubun::CURRENT_UNDER_SALE->value, ProductStatusKubun::CANCEL_SALE->value, ProductStatusKubun::ALREADY_PARCHASED->value])
                     ->orderBy('updated_at', 'desc')->get();
 
         $title = '商品一覧';
-        $subtitle = '出品中の商品一覧';
+        $subtitle = '出品した商品一覧';
         $prefs = Prefecture::all();
 
         return view('ShopPage.SProductList', compact('title','subtitle', 'products', 'prefs'));
+
+    }
+
+    function sold(){
+
+        $employer = Session::get('employer');
+
+        // チェック
+        $response = $this->check($employer);
+        if(!empty($response)){
+            return $response;
+        }
+
+        $products = Product::whereSId($employer->s_id)
+                    ->wherePStatus(ProductStatusKubun::ALREADY_PARCHASED)
+                    ->orderBy('updated_at', 'desc')->get();
+
+        $title='商品一覧';
+        $subtitle = '購入された商品一覧';
+        $prefs = Prefecture::all();
+
+        return view('ShopPage.SProductList', compact('title', 'subtitle', 'products', 'prefs'));
 
     }
 

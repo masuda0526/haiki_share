@@ -9874,6 +9874,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     isBuy() {
       return this.product.p_status == 1 ? 'isbuy' : '';
+    },
+    isCancel() {
+      return this.product.p_status == 2 ? 'iscancel' : '';
     }
   }
 });
@@ -9896,6 +9899,14 @@ __webpack_require__.r(__webpack_exports__);
   props: ['product'],
   data() {
     return {};
+  },
+  computed: {
+    isBuy() {
+      return this.product.p_status == 1 ? 'isbuy' : '';
+    },
+    isCancel() {
+      return this.product.p_status == 2 ? 'iscancel' : '';
+    }
   }
 });
 
@@ -9938,10 +9949,6 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     click() {
       this.page++;
     },
-    sort() {
-      let l = [];
-      while (l.length < this.initialProductCnt * this.page) {}
-    },
     isCheck(p) {
       return this.checkText(p) && this.checkPrice(p) && this.checkPref(p) && this.checkNowSale(p) && this.checkExDt(p);
     },
@@ -9974,7 +9981,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     checkMin(p) {
       let min = this.minPrice;
       if (min) {
-        if (p.dis_price > min) {
+        if (p.dis_price >= min) {
           return true;
         }
         return false;
@@ -9984,7 +9991,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     checkMax(p) {
       let max = this.maxPrice;
       if (max) {
-        if (p.dis_price < max) {
+        if (p.dis_price <= max) {
           return true;
         }
         return false;
@@ -9994,7 +10001,7 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
     checkPref(p) {
       let pref_id = this.prefId;
       if (pref_id) {
-        if (p.pref_id == pref_id) {
+        if (p.p_pref_id == pref_id) {
           return true;
         }
         return false;
@@ -10593,7 +10600,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    class: ["c-card", _vm.forUseClass, _vm.isBuy]
+    class: ["c-card", _vm.forUseClass, _vm.isBuy, _vm.isCancel]
   }, [_c("div", {
     staticClass: "c-card-img"
   }, [_c("img", {
@@ -10641,7 +10648,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "c-product__land"
+    class: ["c-product__land", _vm.isBuy, _vm.isCancel]
   }, [_c("div", {
     staticClass: "c-product__imgBox"
   }, [_c("img", {

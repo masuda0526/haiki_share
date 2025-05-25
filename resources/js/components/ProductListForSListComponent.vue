@@ -35,12 +35,6 @@ export default{
         click(){
             this.page++;
         },
-        sort(){
-            let l = [];
-            while(l.length < this.initialProductCnt * this.page){
-
-            }
-        },
         isCheck(p){
             return this.checkText(p) && this.checkPrice(p) && this.checkPref(p) && this.checkNowSale(p) && this.checkExDt(p);
         },
@@ -73,7 +67,7 @@ export default{
         checkMin(p){
             let min = this.minPrice;
             if(min){
-                if(p.dis_price > min){
+                if(p.dis_price >= min){
                     return true;
                 }
                 return false;
@@ -83,7 +77,7 @@ export default{
         checkMax(p){
             let max = this.maxPrice;
             if(max){
-                if(p.dis_price < max){
+                if(p.dis_price <= max){
                     return true;
                 }
                 return false;
@@ -93,7 +87,7 @@ export default{
         checkPref(p){
             let pref_id = this.prefId;
             if(pref_id){
-                if(p.pref_id == pref_id){
+                if(p.p_pref_id == pref_id){
                     return true;
                 }
                 return false;

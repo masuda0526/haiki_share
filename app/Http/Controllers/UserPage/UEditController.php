@@ -7,7 +7,6 @@ use App\Models\Prefecture;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,12 +49,33 @@ class UEditController extends BaseUserPageController
             return back()->withInput($request->all())->withErrors(['duplicate_email'=>'このメールアドレスはすでに登録されています。']);
         }
 
+        $nowPass = $input['nowpass'];
+        $newPass = $input['newpass'];
+        $rePass = $input['repass'];
+
+        // 新しいパスワードまたは現在のパスワードに入力があればバリデーション追加
+        if(!empty($nowPass) || !empty($newPass) || !empty($rePass)){
+            // パスワードの入力確認
+            if(empty($nowPass) || empty($newPass) || empty($rePass)){
+                return back()->withInput($input)->withErrors(['noRequiredPass' => 'パスワードを変更する場合は、お使いのパスワード、新しいパスワード、確認用のパスワードを入力してください。']);
+            }
+            // ４文字以上か
+            if(mb_strlen($newPass) < 3){
+                return back()->withInput($input)->withErrors(['minLengthPass' => '新しいパスワードは４文字以上で入力してください。']);
+            }
+            // 一致確認
+            if(!$this->checkMatchPass($newPass, $rePass)){
+                return back()->withInput($input)->withErrors(['noMatchPass' => 'パスワードが一致しません。']);
+            }
+        }
+
         $user = User::find($prevUser->u_id);
         $user->u_sei = $input['u_sei'];
         $user->u_mei = $input['u_mei'];
         $user->email = $input['email'];
         $user->u_pref = $input['pref'];
         $user->u_adrs = $input['address'];
+        if(!empty($newPass))$user->password = hash('sha256', $newPass);
         $user->save();
 
         Session::put('user', $user);

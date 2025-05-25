@@ -50,7 +50,7 @@
                 <div class="c-check__body">
                     @foreach ($auths as $key=>$val)
                     <div>
-                        <input type="checkbox" name="auth[]" value="{{ $key }}" @checked(in_array($key, $authValue))>{{ $val }}
+                        <input type="checkbox" name="auth[]" value="{{ $key }}" {{ (in_array($key, $authValue))?'checked':'' }}>{{ $val }}
                     </div>
                     @endforeach
                 </div>

@@ -17,7 +17,7 @@ class Product extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $appends = ['p_img_url', 'p_detail_page_url'];
+    protected $appends = ['p_img_url', 'p_detail_page_url', 'p_pref_id'];
 
     function shop(){
         return $this->belongsTo(Shop::class);
@@ -35,6 +35,10 @@ class Product extends Model
             return asset('img/noimg.png');
         }
         return asset('img/product/'.$this->p_img);
+    }
+
+    function getPPrefIdAttribute(){
+        return ModelUtil::getPrefIdBySId($this->s_id);
     }
 
     function getPDetailPageUrlAttribute(){

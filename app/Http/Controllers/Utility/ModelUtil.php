@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Group;
 use App\Models\Prefecture;
 use App\Models\Region;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Log;
 
 class ModelUtil{
@@ -35,6 +36,11 @@ class ModelUtil{
      */
     public static function getPrefName(int $pref_id){
         return Prefecture::select('pref_name')->where('pref_id', $pref_id)->first()->pref_name;
+    }
+
+    public static function getPrefIdBySId(String $sId){
+        $shop = Shop::where('s_id', $sId)->first();
+        return $shop->s_pref;
     }
 
     /**

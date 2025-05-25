@@ -8566,6 +8566,7 @@ body {
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 15px;
+  position: relative;
 }
 @media (max-width: 576px) {
   .c-product__land {
@@ -8642,6 +8643,7 @@ body {
   opacity: 0.8;
   left: 5px;
   width: calc(100% - 10px);
+  z-index: 5;
 }
 @media (max-width: 576px) {
   .c-search-icon, .c-group-icon {
@@ -9186,6 +9188,11 @@ body {
   width: 70%;
   margin: 0 auto;
 }
+@media (max-width: 576px) {
+  .p-saddemployer {
+    width: 100%;
+  }
+}
 
 .p-sremind {
   width: 70%;
@@ -9204,6 +9211,18 @@ body {
 .isbuy::after {
   content: "販売済";
   background-color: #000;
+  color: #fff;
+  opacity: 0.7;
+  padding: 3px;
+  border-radius: 5px 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.iscancel::after {
+  content: "停止中";
+  background-color: #dc3030;
   color: #fff;
   opacity: 0.7;
   padding: 3px;

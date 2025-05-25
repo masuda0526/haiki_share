@@ -70,4 +70,5 @@ Route::middleware(['check.login.employer'])->group(function(){
     Route::get('/editemployer/{employerId}', [\App\Http\Controllers\ShopPage\SEditEmployerController::class, 'index'])->name('editemployer.index');
     Route::post('/editemployer', [\App\Http\Controllers\ShopPage\SEditEmployerController::class, 'edit'])->name('editemployer.edit');
     Route::get('/slist/nowsale', [\App\Http\Controllers\ShopPage\SProductListController::class, 'nowsale'])->name('slist.nowsale');
+    Route::get('/slist/sold', [\App\Http\Controllers\ShopPage\SProductListController::class, 'sold'])->name('slist.sold');
 });

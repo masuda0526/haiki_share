@@ -1,5 +1,5 @@
 <template>
-    <div :class="['c-card', forUseClass, isBuy]">
+    <div :class="['c-card', forUseClass, isBuy, isCancel]">
         <div class="c-card-img">
             <img :src="product.p_img_url">
         </div>
@@ -37,6 +37,9 @@ export default{
         },
         isBuy(){
             return (this.product.p_status == 1)?'isbuy':'';
+        },
+        isCancel(){
+            return (this.product.p_status == 2)?'iscancel':'';
         }
     },
 }

@@ -23,7 +23,7 @@
     </div>
     <div class="u-mb6">
         <div class="o-content-box">
-            <h3 class="o-content-title">出品した商品</h3>
+            <h3 class="o-content-title">出品中の商品</h3>
             <a class="o-link" href="{{ route('slist.nowsale') }}">一覧へ ＞</a>
         </div>
         <div class="p-smypage__product">
@@ -45,7 +45,7 @@
     <div class="u-mb6">
         <div class="o-content-box">
             <h3 class="o-content-title">購入された商品</h3>
-            <a class="o-link" href="{{ route('slist.nowsale') }}">一覧へ ＞</a>
+            <a class="o-link" href="{{ route('slist.sold') }}">一覧へ ＞</a>
         </div>
         <div class="p-smypage__product p-smypage__product-parchased">
             @if (!empty($parchaseProducts))
@@ -77,7 +77,7 @@
             </div>
             @if($isEditEmployer)
             <div class="o-btnArea-right p-smypage__staff-btn">
-                <a class="o-btn__rad u-btn__mainColor">従業員追加</a>
+                <a class="o-btn__rad u-btn__mainColor" href="{{ route('addemployer.index') }}">従業員追加</a>
             </div>
             @endif
         </div>

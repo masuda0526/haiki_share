@@ -24,6 +24,7 @@
         opacity: 0.8;
         left: 5px;
         width: calc(100% - 10px);
+        z-index: 5;
     }
     &-icon{
         @include response(s){

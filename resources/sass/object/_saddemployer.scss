@@ -1,4 +1,7 @@
 .p-saddemployer{
     width: 70%;
     margin: 0 auto;
+    @include response(s){
+        width: 100%;
+    }
 }

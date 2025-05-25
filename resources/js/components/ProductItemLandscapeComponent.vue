@@ -1,5 +1,5 @@
 <template>
-    <div class="c-product__land">
+    <div :class="['c-product__land', isBuy, isCancel]">
         <div class="c-product__imgBox">
             <img :src="product.p_img_url" alt="商品画像">
         </div>
@@ -24,6 +24,15 @@ export default{
         return{
 
         }
+    },
+    computed:{
+        isBuy(){
+            return (this.product.p_status == 1)?'isbuy':'';
+        },
+        isCancel(){
+            return (this.product.p_status == 2)?'iscancel':'';
+        }
+
     }
 }
 </script>

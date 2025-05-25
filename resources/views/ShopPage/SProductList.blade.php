@@ -5,7 +5,6 @@
 @section('sub_content')
 <div>
     <search-box-component
-    :issalebox='false'
     ></search-box-component>
 </div>
 @endsection
