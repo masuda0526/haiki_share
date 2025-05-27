@@ -58,7 +58,7 @@ const app = new Vue({
         'product-card-container':ProductCardContainerComponent,
         'img-input':ImgInputComponent,
         'category-input':CategorySelectComponent,
-        'humberger-menu':HumbergerComponent,
+        // 'humberger-menu':HumbergerComponent,
         'header-component':HeaderComponent,
     }
 });
