@@ -8,7 +8,6 @@ require('./bootstrap');
 import AreaSelectComponent from './components/AreaSelectComponent.vue';
 import CategorySelectComponent from './components/CategorySelectComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
-import HumbergerComponent from './components/humbergerComponent.vue';
 import ImgInputComponent from './components/ImgInputComponent.vue';
 import ProductCardContainerComponent from './components/ProductCardContainerComponent.vue';
 import ProductCardItemComponent from './components/ProductCardItemComponent.vue';
@@ -58,7 +57,7 @@ const app = new Vue({
         'product-card-container':ProductCardContainerComponent,
         'img-input':ImgInputComponent,
         'category-input':CategorySelectComponent,
-        'humberger-menu':HumbergerComponent,
+        // 'humberger-menu':HumbergerComponent,
         'header-component':HeaderComponent,
     }
 });
