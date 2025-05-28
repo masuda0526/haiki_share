@@ -22,7 +22,6 @@ import axios from 'axios';
 export default{
     data(){
         return{
-            url:'/api/header',
             nav:[],
             isShow:false,
             isMobile:window.innerWidth <= 576,
@@ -50,7 +49,7 @@ export default{
         }
     },
     async created(){
-        let res = await axios.get(this.url);
+        let res = await axios.get(window.Laravel.headerUrl);
         this.nav = res.data;
     }
 

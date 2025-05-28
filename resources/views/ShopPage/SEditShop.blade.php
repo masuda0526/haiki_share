@@ -30,7 +30,7 @@
                 :regions="{{$regions}}"
                 :apiurl="'{{$apiurl}}'"
                 :r_id="{{ $r_id }}"
-                :u_pref="{{ $shop->s_pref }}"
+                :u_pref="'{{ $shop->s_pref }}'"
                 ></area-select-component>
                 <div class="c-form__formBox">
                     <label for="s_adrs">住所

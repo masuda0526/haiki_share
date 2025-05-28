@@ -35,6 +35,7 @@ export default{
     },
     methods:{
         getAreas(){
+            this.user_pref = '00';
             axios.get(this.apiurl,{
                 params:{
                     region_id:this.region_id

@@ -10,6 +10,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script>
+        window.Laravel={
+            baseUrl:@json(url('/')),
+            headerUrl:@json(route('api.header')),
+        }
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
