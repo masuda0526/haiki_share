@@ -42,7 +42,7 @@ class ApiController extends BaseController
         $nav = [
             [
                 'name'=>'TOP',
-                'url'=>''
+                'url'=>route('top').'/'
             ],
             [
                 'name'=>'商品一覧',

@@ -9232,6 +9232,22 @@ body {
   left: 0;
 }
 
+.p-top-title__sub {
+  margin-bottom: 20px;
+}
+.p-top-container p {
+  margin-bottom: 15px;
+}
+.p-top-container ul {
+  padding: 20px;
+}
+.p-top-container li {
+  list-style: disc;
+}
+.p-top-box {
+  margin-bottom: 40px;
+}
+
 .u-btn__mainColor {
   color: #fff;
   background-color: #853565;

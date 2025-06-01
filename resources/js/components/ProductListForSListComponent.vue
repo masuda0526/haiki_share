@@ -86,7 +86,7 @@ export default{
         },
         checkPref(p){
             let pref_id = this.prefId;
-            if(pref_id){
+            if(pref_id != '0'){
                 if(p.p_pref_id == pref_id){
                     return true;
                 }

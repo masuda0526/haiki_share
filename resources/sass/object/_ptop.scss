@@ -1,0 +1,19 @@
+.p-top{
+    &-title__sub{
+        margin-bottom: 20px;
+    }
+    &-container{
+        p{
+            margin-bottom: 15px;
+        }
+        ul{
+            padding: 20px;
+        }
+        li{
+            list-style: disc;
+        }
+    }
+    &-box{
+        margin-bottom: 40px;
+    }
+}
